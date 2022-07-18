@@ -29,8 +29,10 @@ export default function PostPage({ post }: { post: Post }) {
                 </p>
 
                 <div className="pt-10">
-                    <Link  href="/" >
-                    <a className='text-primaryColour'> &larr; back home </a>
+                    <Link href="/" >
+                        <a className='text-primaryColour font-bold'>
+                            &larr; back home
+                        </a>
                     </Link>
                 </div>
             </>

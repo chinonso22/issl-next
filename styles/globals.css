@@ -21,6 +21,6 @@ a {
 
 @layer components {
   .btn1{
-    @apply bg-purple-700 px-7 py-4 text-black rounded-lg font-semibold cursor-pointer hover:shadow duration-100 ease-in-out disabled:opacity-60 md:text-xl md:py-6;
+    @apply bg-primaryColour px-7 py-4 text-black rounded-lg font-semibold cursor-pointer hover:shadow duration-100 ease-in-out disabled:opacity-60 md:text-xl md:py-6;
   }
 }

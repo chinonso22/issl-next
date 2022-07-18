@@ -18,3 +18,10 @@ model Post {
   slug    String @unique @default("")
   content String @default("")
 }
+
+model Service {
+  id      String @id @default(cuid())
+  title   String @default("")
+  slug    String @unique @default("")
+  content String @default("")
+}

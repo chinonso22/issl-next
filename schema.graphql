@@ -91,6 +91,52 @@ input PostCreateInput {
   content: String
 }
 
+type Service {
+  id: ID!
+  title: String
+  slug: String
+  content: String
+}
+
+input ServiceWhereUniqueInput {
+  id: ID
+  slug: String
+}
+
+input ServiceWhereInput {
+  AND: [ServiceWhereInput!]
+  OR: [ServiceWhereInput!]
+  NOT: [ServiceWhereInput!]
+  id: IDFilter
+  title: StringFilter
+  slug: StringFilter
+  content: StringFilter
+}
+
+input ServiceOrderByInput {
+  id: OrderDirection
+  title: OrderDirection
+  slug: OrderDirection
+  content: OrderDirection
+}
+
+input ServiceUpdateInput {
+  title: String
+  slug: String
+  content: String
+}
+
+input ServiceUpdateArgs {
+  where: ServiceWhereUniqueInput!
+  data: ServiceUpdateInput!
+}
+
+input ServiceCreateInput {
+  title: String
+  slug: String
+  content: String
+}
+
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
@@ -106,6 +152,15 @@ type Mutation {
   updatePosts(data: [PostUpdateArgs!]!): [Post]
   deletePost(where: PostWhereUniqueInput!): Post
   deletePosts(where: [PostWhereUniqueInput!]!): [Post]
+  createService(data: ServiceCreateInput!): Service
+  createServices(data: [ServiceCreateInput!]!): [Service]
+  updateService(
+    where: ServiceWhereUniqueInput!
+    data: ServiceUpdateInput!
+  ): Service
+  updateServices(data: [ServiceUpdateArgs!]!): [Service]
+  deleteService(where: ServiceWhereUniqueInput!): Service
+  deleteServices(where: [ServiceWhereUniqueInput!]!): [Service]
 }
 
 type Query {
@@ -117,6 +172,14 @@ type Query {
   ): [Post!]
   post(where: PostWhereUniqueInput!): Post
   postsCount(where: PostWhereInput! = {}): Int
+  services(
+    where: ServiceWhereInput! = {}
+    orderBy: [ServiceOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+  ): [Service!]
+  service(where: ServiceWhereUniqueInput!): Service
+  servicesCount(where: ServiceWhereInput! = {}): Int
   keystone: KeystoneMeta!
 }
 
