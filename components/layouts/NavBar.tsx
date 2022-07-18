@@ -4,7 +4,7 @@
 
 export default function NavBar() {
     return (
-        <div className="w-full px-5 md:max-w-7xl md:px-5 m-auto flex items-center justify-between">
+        <div className="w-full px-5 md:max-w-7xl md:px-5 m-auto flex items-center justify-between bg-primaryColour">
 
             {/* logo */}
 

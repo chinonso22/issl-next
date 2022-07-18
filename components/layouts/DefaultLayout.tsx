@@ -6,9 +6,10 @@ import Footer from "./Footer";
 
 function DefaultLayout({ children }: { children?: JSX.Element }) {
     return (
-        <div className="w-full">
-            <div className="bg-primaryColour w-full overscroll-x-contain ">
-                <NavBar />
+        <div className="w-full gap-y-10">
+           
+            <div className="bg-primaryColour w-full overscroll-x-contain  ">
+            <NavBar />
 
                 <div className="bg-white w-full">
                     <main>
@@ -21,16 +22,25 @@ function DefaultLayout({ children }: { children?: JSX.Element }) {
 
                         {children}
 
-                        <Footer />
+                       
                     </main>
-
+                  
                 </div>
 
-
+            
               
             </div>
 
+            <div className="pt-5">
+            <Footer />
+            </div>
+            
+          
+            
 
+            
+
+           
 
         </div>
     )
