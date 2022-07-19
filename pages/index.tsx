@@ -8,8 +8,9 @@ import Header from '../components/layouts/Header';
 import type { NextPageWithLayout } from "./_app";
 import type { ReactElement } from "react";
 
-import TopHero from './TopHero';
+
 import TopIn from './TopIn';
+
 
 
 
@@ -29,8 +30,12 @@ function OurSolutions() {
 
 
       <div className='grid grid-cols-12 md:space-x-5 space-y-10'>
+
+
         {/* stock  */}
-        <div className="bg-grayColour py-2 text-primaryColour rounded-xl col-span-12 md:col-span-6 hover:bg-primaryColour hover:text-white">
+
+        <Link href={'/post/stuff'}>
+        <div className="bg-grayColour py-2 text-primaryColour rounded-xl col-span-12 md:col-span-6 hover:bg-primaryColour hover:text-white hover:cursor-pointer">
 
           <div className='px-10 py-2 '>
             <img
@@ -47,10 +52,10 @@ function OurSolutions() {
             </p>
           </div>
         </div>
-
+        </Link>
 
         {/* authentication */}
-        <div className=' md:col-span-6 col-span-12 rounded-xl bg-grayColour text-primaryColour hover:bg-primaryColour hover:text-white'>
+        <div className=' md:col-span-6 col-span-12 rounded-xl bg-grayColour text-primaryColour hover:bg-primaryColour hover:text-white hover:cursor-pointer'>
 
 
           <div className=' font-semibold text-lg px-10 py-2'>
@@ -64,7 +69,7 @@ function OurSolutions() {
 
         {/* Banking */}
 
-        <div className='bg-red-500 md:col-span-4 col-span-12 rounded-xl bg-grayColour text-primaryColour hover:bg-primaryColour hover:text-white'>
+        <div className='bg-red-500 md:col-span-4 col-span-12 rounded-xl bg-grayColour text-primaryColour hover:bg-primaryColour hover:text-white hover:cursor-pointer'>
 
 
           <div className='font-semibold text-lg px-10 py-2'>
@@ -77,7 +82,7 @@ function OurSolutions() {
         </div>
 
         {/* biometrics */}
-        <div className='bg-red-500 md:col-span-4 col-span-12 rounded-xl bg-grayColour text-primaryColour hover:bg-primaryColour hover:text-white'>
+        <div className='bg-red-500 md:col-span-4 col-span-12 rounded-xl bg-grayColour text-primaryColour hover:bg-primaryColour hover:text-white hover:cursor-pointer'>
 
 
           <div className='font-semibold text-lg px-10 py-2'>
@@ -90,7 +95,7 @@ function OurSolutions() {
         </div>
 
         {/* solution */}
-        <div className='bg-red-500 md:col-span-4 col-span-12 rounded-xl bg-grayColour text-primaryColour hover:bg-primaryColour hover:text-white'>
+        <div className='bg-red-500 md:col-span-4 col-span-12 rounded-xl bg-grayColour text-primaryColour hover:bg-primaryColour hover:text-white hover:cursor-pointer'>
 
 
           <div className='font-semibold text-lg px-10 py-2'>
@@ -120,9 +125,12 @@ function OurServices() {
     <div className='py-10 px-5 space-y-10 '>
 
       <div className='md:px-[300px]'>
-        <div className='font-semibold text-3xl w-[600px] bg-blue-500 text-center'>
+        <div className='font-semibold text-3xl w-[600px] text-center'>
           Our Services
-          <p className="bg-red-500 h-0.5 w-14"></p>
+          <div className='px-[210px]'>
+          <p className="bg-red-500 h-0.5 w-14 flex center"></p>
+          </div>
+          
 
           <p className='font-normal text-lg pt-5'>
             We offer quality and assured services that has long lasting results and that will maximize your businesses profit
@@ -131,25 +139,40 @@ function OurServices() {
       </div>
 
       <div className='grid grid-cols-4 space-y-2 '>
-        <img
-          src='/app_dev.svg'
-          className='col-span-2 md:col-span-1'
-        />
 
+        <Link
+        href={'/post/stuff-2'}>
         <img
           src='/app_dev.svg'
-          className='col-span-2 md:col-span-1'
+          className='col-span-2 md:col-span-1 hover:cursor-pointer hover:scale-110 hover:shadow-gray-800 hover:shadow-lg'
         />
+        </Link>
+       
+        <Link
+        href={'/post/stuff-2'}>
+        <img
+          src='/app_dev.svg'
+          className='col-span-2 md:col-span-1 hover:cursor-pointer hover:scale-110 hover:shadow-gray-800 hover:shadow-lg'
+        />
+        </Link>
 
-        <img
-          src='/app_dev.svg'
-          className='col-span-2 md:col-span-1'
-        />
 
+        <Link
+        href={'/post/stuff-2'}>
         <img
           src='/app_dev.svg'
-          className='col-span-2 md:col-span-1'
+          className='col-span-2 md:col-span-1 hover:cursor-pointer hover:scale-110 hover:shadow-gray-800 hover:shadow-lg'
         />
+        </Link>
+
+
+        <Link
+        href={'/post/stuff-2'}>
+        <img
+          src='/app_dev.svg'
+          className='col-span-2 md:col-span-1 hover:cursor-pointer hover:scale-110 hover:shadow-gray-800 hover:shadow-lg'
+        />
+        </Link>
 
 
       </div>

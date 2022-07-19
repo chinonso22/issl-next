@@ -14,34 +14,78 @@ export default function Footer() {
                 <div className="text-white px-10 py-5">
                     Quick links
 
-                    <div>
-                        Home
-                    </div>
-
-                    <div>
-                        Company
-                    </div>
-
-                    <div>
-                        Services
-                    </div>
-
-                    <div>
-                        Solutions
-                    </div>
 
 
-                    <div>
-                        Technologies
-                    </div>
+                    <Link
+                        href={'/'}
+                       >
+                        <div
+                         className="hover:cursor-pointer"
+                        >
+                            Home
+                        </div>
+                    </Link>
 
-                    <div>
-                        Cloud Services
-                    </div>
+                    <Link
+                        href={'/'}
+                       >
+                        <div
+                         className="hover:cursor-pointer"
+                        >
+                            Company
+                        </div>
+                    </Link>
 
-                    <div>
-                        Products
-                    </div>
+                    <Link
+                        href={'/'}
+                       >
+                        <div
+                         className="hover:cursor-pointer"
+                        >
+                            Services 
+                            </div>
+                    </Link>
+
+                    <Link
+                        href={'/'}
+                       >
+                        <div
+                         className="hover:cursor-pointer"
+                        >
+                            Solutions
+                        </div>
+                    </Link>
+
+
+                    <Link
+                        href={'/'}
+                       >
+                        <div
+                         className="hover:cursor-pointer"
+                        >
+                            Technologies
+                        </div>
+                    </Link>
+
+                    <Link
+                        href={'/'}
+                       >
+                        <div
+                         className="hover:cursor-pointer"
+                        >
+                            Cloud Services
+                        </div>
+                    </Link>
+
+                    <Link
+                        href={'/'}
+                       >
+                        <div
+                         className="hover:cursor-pointer"
+                        >
+                            Products
+                        </div>
+                    </Link>
 
 
 
@@ -106,7 +150,7 @@ export default function Footer() {
 
             </div>
 
-            <hr/>
+            <hr />
 
             <div className=" text-center text-white py-5">
                 &copy; 2022. All rights reserved to Integrated Software Services Limited | ISSLNG.
