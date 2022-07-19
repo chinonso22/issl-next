@@ -32,3 +32,20 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+
+## Adding more fields
+ to add more fields edit the keystone.ts folder
+
+
+ ## keystone/ graphql ui
+ the keystone and graghql ui can both  be found at [http://localhost:8000] and [http://localhost:8000/api/graphql] respectively 
+
+
+## calling/ query 
+for an example on how to use keystone queries/ api calls check out the call.txt file or [https://keystonejs.com/docs] for the keystone documentation.
+
+
+## topin.tsx / carousel 
+for the carousel the package swiper.js was used visit [https://swiperjs.com] for more information and the full documentaion, see the react examples/documentation for further assistance

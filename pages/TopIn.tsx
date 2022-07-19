@@ -1,3 +1,6 @@
+// this is the hero header for the main page
+// check readme.md for more 
+
 import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";

@@ -9,9 +9,12 @@ export default function Footer() {
             <div className="flex center">
                 <img
                     src="/logo.svg"
-                    className="px-10"
+                    className="px-10 md:w-[180px] md:h-[200px]  "
                 />
-                <div className="text-white px-10 py-5">
+
+
+
+                <div className="text-white px-10 py-5 md:px-[200px]">
                     Quick links
 
 

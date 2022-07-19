@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 
 
@@ -7,12 +8,16 @@ export default function NavBar() {
         <div className="w-full px-5 md:max-w-7xl md:px-5 m-auto flex items-center justify-between bg-primaryColour">
 
             {/* logo */}
+            <Link
+                href={"/"}
+            >
+                <img
+                    src="/logo.svg"
+                    alt="logo"
+                    className="object-contain w-10 md:w-20 float-left hover:cursor-pointer "
+                />
+            </Link>
 
-            <img
-                src="/logo.svg"
-                alt="logo"
-                className="object-contain w-10 md:w-20 float-left "
-            />
             <div className="flex space-x-5  md:space-x-10 justify-end items-center">
 
 
