@@ -6,15 +6,17 @@ export default function Footer() {
     return (
         <div className="bg-primaryColour bottom-0 w-full items-center   ">
 
-            <div className="flex center">
+            <div className="flex center grid grid-cols-3">
+
+
                 <img
                     src="/logo.svg"
-                    className="px-10 md:w-[180px] md:h-[200px]  "
+                    className=" px-10 md:w-[180px] md:h-[200px]  "
                 />
 
 
 
-                <div className="text-white px-10 py-5 md:px-[200px] break-words">
+                <div className="text-white break-words">
                     Quick links
 
 
@@ -96,7 +98,7 @@ export default function Footer() {
                 </div>
 
 
-                <div className="text-white px-10 py-5 break-words">
+                <div className="text-white  break-words">
                     Contact Information
 
                     <div className="font-semibold">

@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
-import NavBar from "./NavBar";
+
+import { Navbar } from "./Navbar";
 
 import Footer from "./Footer";
 
@@ -10,7 +11,7 @@ function DefaultLayout({ children }: { children?: JSX.Element }) {
             
             
             <div className="bg-primaryColour w-full overscroll-x-auto  ">
-            <NavBar/>
+            <Navbar/>
 
                 <div className="bg-white w-full">
                     <main>

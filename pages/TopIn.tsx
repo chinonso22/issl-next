@@ -28,13 +28,13 @@ export default function TopIn() {
         }}
         navigation={true}
         modules={[Pagination, Navigation]}
-        className="mySwiper"
+        className="mySwiper w-full"
       >
 
 
 
         <SwiperSlide>
-          <section className="bg-primaryColour">
+          <section className="bg-primaryColour w-full">
 
 
             <div className="grid max-w-screen-xl md:max-w-[5000px] px-4 py-8 mx-auto lg:gap-8 xl:gap-0 md:py-10 lg:grid-cols-12">
@@ -65,7 +65,7 @@ export default function TopIn() {
 
 
         <SwiperSlide>
-          <section className="bg-primaryColour">
+          <section className="bg-primaryColour w-full">
 
 
             <div className="grid max-w-screen-xl md:max-w-[5000px] px-4 py-8 mx-auto lg:gap-8 xl:gap-0 md:py-10 lg:grid-cols-12">
@@ -98,7 +98,7 @@ export default function TopIn() {
 
 
         <SwiperSlide>
-          <section className="bg-primaryColour">
+          <section className="bg-primaryColour w-full">
 
 
             <div className="grid max-w-screen-xl md:max-w-[5000px] px-4 py-8 mx-auto lg:gap-8 xl:gap-0 md:py-10 lg:grid-cols-12">
