@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <div className="bg-primaryColour bottom-0 w-full items-center  ">
+        <div className="bg-primaryColour bottom-0 w-full items-center   ">
 
             <div className="flex center">
                 <img
@@ -14,7 +14,7 @@ export default function Footer() {
 
 
 
-                <div className="text-white px-10 py-5 md:px-[200px]">
+                <div className="text-white px-10 py-5 md:px-[200px] break-words">
                     Quick links
 
 
@@ -96,7 +96,7 @@ export default function Footer() {
                 </div>
 
 
-                <div className="text-white px-10 py-5">
+                <div className="text-white px-10 py-5 break-words">
                     Contact Information
 
                     <div className="font-semibold">

@@ -17,16 +17,19 @@ import TopIn from './TopIn';
 
 function OurSolutions() {
   return (
-    <div className='py-10 px-5 space-y-10 '>
+    <div className='py-10 px-5 space-y-10 w-full break-words'>
 
       <div className='font-semibold text-3xl w-[600px]'>
         Our Solutions
         <div className="bg-red-500 h-0.5 w-14"></div>
 
-        <p className='font-normal text-lg pt-5'>
-          We are committed to providing flexible, low-cost solutions to our customers that will help make their businesses run more smoothly and profitably.
+        <p className='font-normal text-lg pt-5 '>
+          We are committed to providing flexible,
+           low-cost solutions to our customers that will help make their businesses run more smoothly and profitably.
         </p>
       </div>
+
+      
 
 
       <div className='grid grid-cols-12 md:space-x-5 space-y-10'>
@@ -39,8 +42,7 @@ function OurSolutions() {
 
           <div className='px-10 py-2 '>
             <img
-              src='/stock.svg'
-              className='bg-white rounded-full w-10  '
+              src='/small_stock_.svg'
             />
           </div>
 
@@ -56,7 +58,11 @@ function OurSolutions() {
 
         {/* authentication */}
         <div className=' md:col-span-6 col-span-12 rounded-xl bg-grayColour text-primaryColour hover:bg-primaryColour hover:text-white hover:cursor-pointer'>
-
+        <div className='px-10 py-2 '>
+            <img
+              src='/small_stock_.svg'
+            />
+          </div>
 
           <div className=' font-semibold text-lg px-10 py-2'>
             Strong Authentication
@@ -71,7 +77,11 @@ function OurSolutions() {
 
         <div className='bg-red-500 md:col-span-4 col-span-12 rounded-xl bg-grayColour text-primaryColour hover:bg-primaryColour hover:text-white hover:cursor-pointer'>
 
-
+        <div className='px-10 py-2 '>
+            <img
+              src='/small_bankng.svg'
+            />
+          </div>
           <div className='font-semibold text-lg px-10 py-2'>
             Banking
             <p className='font-normal py-2 text-sm'>
@@ -84,7 +94,11 @@ function OurSolutions() {
         {/* biometrics */}
         <div className='bg-red-500 md:col-span-4 col-span-12 rounded-xl bg-grayColour text-primaryColour hover:bg-primaryColour hover:text-white hover:cursor-pointer'>
 
-
+        <div className='px-10 py-2 '>
+            <img
+              src='/small_bio_met.svg'
+            />
+          </div>
           <div className='font-semibold text-lg px-10 py-2'>
             Biometrics
             <p className='font-normal py-2 text-sm'>
@@ -94,10 +108,14 @@ function OurSolutions() {
           </div>
         </div>
 
-        {/* solution */}
+        {/* crm solution */}
         <div className='bg-red-500 md:col-span-4 col-span-12 rounded-xl bg-grayColour text-primaryColour hover:bg-primaryColour hover:text-white hover:cursor-pointer'>
 
-
+        <div className='px-10 py-2 '>
+            <img
+              src='/small_crm.svg'
+            />
+          </div>
           <div className='font-semibold text-lg px-10 py-2'>
             CRM Solutions
             <p className='font-normal py-2 text-sm'>
@@ -122,13 +140,13 @@ function OurSolutions() {
 
 function OurServices() {
   return (
-    <div className='py-10 px-5 space-y-10 '>
+    <div className='py-10 px-5 space-y-10  break-words'>
 
       <div className='md:px-[300px]'>
-        <div className='font-semibold text-3xl w-[600px] text-center'>
+        <div className='font-semibold text-3xl md:w-[600px] text-center break-words'>
           Our Services
-          <div className='px-[210px]'>
-          <p className="bg-red-500 h-0.5 w-14 flex center"></p>
+          <div className='md:px-[210px] px-[80px]'>
+          <div className="bg-red-500 h-0.5 w-14 flex center"></div>
           </div>
           
 
@@ -138,21 +156,21 @@ function OurServices() {
         </div>
       </div>
 
-      <div className='grid grid-cols-4 space-y-2 '>
+      <div className='grid grid-cols-4 space-y-3 '>
 
         <Link
         href={'/post/stuff-2'}>
         <img
           src='/app_dev.svg'
-          className='col-span-2 md:col-span-1 hover:cursor-pointer hover:scale-110 hover:shadow-gray-800 hover:shadow-lg'
+          className='col-span-4 md:col-span-1 hover:cursor-pointer hover:scale-110 hover:shadow-gray-800 hover:shadow-lg'
         />
         </Link>
        
         <Link
         href={'/post/stuff-2'}>
         <img
-          src='/app_dev.svg'
-          className='col-span-2 md:col-span-1 hover:cursor-pointer hover:scale-110 hover:shadow-gray-800 hover:shadow-lg'
+          src='/in_consult.svg'
+          className='col-span-4 md:col-span-1 hover:cursor-pointer hover:scale-110 hover:shadow-gray-800 hover:shadow-lg'
         />
         </Link>
 
@@ -160,8 +178,8 @@ function OurServices() {
         <Link
         href={'/post/stuff-2'}>
         <img
-          src='/app_dev.svg'
-          className='col-span-2 md:col-span-1 hover:cursor-pointer hover:scale-110 hover:shadow-gray-800 hover:shadow-lg'
+          src='/in_crm.svg'
+          className='col-span-4 md:col-span-1 hover:cursor-pointer hover:scale-110 hover:shadow-gray-800 hover:shadow-lg'
         />
         </Link>
 
@@ -169,8 +187,8 @@ function OurServices() {
         <Link
         href={'/post/stuff-2'}>
         <img
-          src='/app_dev.svg'
-          className='col-span-2 md:col-span-1 hover:cursor-pointer hover:scale-110 hover:shadow-gray-800 hover:shadow-lg'
+          src='/in_web_dev.svg'
+          className='col-span-4 md:col-span-1 hover:cursor-pointer hover:scale-110 hover:shadow-gray-800 hover:shadow-lg'
         />
         </Link>
 
