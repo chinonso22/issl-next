@@ -19,17 +19,20 @@ function OurSolutions() {
   return (
     <div className='py-10 px-5 space-y-10 w-full break-words'>
 
-      <div className='font-semibold text-3xl w-[600px]'>
-        Our Solutions
-        <div className="bg-red-500 h-0.5 w-14"></div>
+      <div className='font-semibold text-3xl md:w-[600px]'>
+        <div>
+          Our Solotions
+          <div className='bg-red-500 h-0.5 w-14' />
+        </div>
+
 
         <p className='font-normal text-lg pt-5 '>
           We are committed to providing flexible,
-           low-cost solutions to our customers that will help make their businesses run more smoothly and profitably.
+          low-cost solutions to our customers that will help make their businesses run more smoothly and profitably.
         </p>
       </div>
 
-      
+
 
 
       <div className='grid grid-cols-12 md:space-x-5 space-y-10'>
@@ -38,27 +41,27 @@ function OurSolutions() {
         {/* stock  */}
 
         <Link href={'/post/stuff'}>
-        <div className="bg-grayColour py-2 text-primaryColour rounded-xl col-span-12 md:col-span-6 hover:bg-primaryColour hover:text-white hover:cursor-pointer">
+          <div className="bg-grayColour py-2 text-primaryColour rounded-xl col-span-12 md:col-span-6 hover:bg-primaryColour hover:text-white hover:cursor-pointer">
 
-          <div className='px-10 py-2 '>
-            <img
-              src='/small_stock_.svg'
-            />
+            <div className='px-10 py-2 '>
+              <img
+                src='/small_stock_.svg'
+              />
+            </div>
+
+
+            <div className="font-semibold text-lg px-10 py-2" >
+              Stock Broking and Financial Services
+              <p className="font-normal py-2 text-sm ">
+                iBroker is an integrated investment management, accounting, transaction handling, customer service and management reporting system
+              </p>
+            </div>
           </div>
-
-
-          <div className="font-semibold text-lg px-10 py-2" >
-            Stock Broking and Financial Services
-            <p className="font-normal py-2 text-sm ">
-              iBroker is an integrated investment management, accounting, transaction handling, customer service and management reporting system
-            </p>
-          </div>
-        </div>
         </Link>
 
         {/* authentication */}
         <div className=' md:col-span-6 col-span-12 rounded-xl bg-grayColour text-primaryColour hover:bg-primaryColour hover:text-white hover:cursor-pointer'>
-        <div className='px-10 py-2 '>
+          <div className='px-10 py-2 '>
             <img
               src='/small_stock_.svg'
             />
@@ -77,7 +80,7 @@ function OurSolutions() {
 
         <div className='bg-red-500 md:col-span-4 col-span-12 rounded-xl bg-grayColour text-primaryColour hover:bg-primaryColour hover:text-white hover:cursor-pointer'>
 
-        <div className='px-10 py-2 '>
+          <div className='px-10 py-2 '>
             <img
               src='/small_bankng.svg'
             />
@@ -94,7 +97,7 @@ function OurSolutions() {
         {/* biometrics */}
         <div className='bg-red-500 md:col-span-4 col-span-12 rounded-xl bg-grayColour text-primaryColour hover:bg-primaryColour hover:text-white hover:cursor-pointer'>
 
-        <div className='px-10 py-2 '>
+          <div className='px-10 py-2 '>
             <img
               src='/small_bio_met.svg'
             />
@@ -111,7 +114,7 @@ function OurSolutions() {
         {/* crm solution */}
         <div className='bg-red-500 md:col-span-4 col-span-12 rounded-xl bg-grayColour text-primaryColour hover:bg-primaryColour hover:text-white hover:cursor-pointer'>
 
-        <div className='px-10 py-2 '>
+          <div className='px-10 py-2 '>
             <img
               src='/small_crm.svg'
             />
@@ -130,7 +133,7 @@ function OurSolutions() {
 
 
 
-    
+
 
     </div>
   )
@@ -140,56 +143,56 @@ function OurSolutions() {
 
 function OurServices() {
   return (
-    <div className='py-10 px-5 space-y-10  break-words'>
+    <div className='py-10 px-5 space-y-10  break-words text-center'>
 
-      <div className='md:px-[300px]'>
-        <div className='font-semibold text-3xl md:w-[600px] text-center break-words'>
-          Our Services
-          <div className='md:px-[210px] px-[80px]'>
-          <div className="bg-red-500 h-0.5 w-14 flex center"></div>
-          </div>
-          
 
-          <p className='font-normal text-lg pt-5'>
+
+      <div className="items-center md:px-[300px]">
+        <div className="text-3xl text-black font-semibold">
+          <a className="underline-offset-8 underline decoration-red-500 "> Our</a>{" "} Services
+        </div>
+
+        <p className='font-normal text-lg pt-5'>
             We offer quality and assured services that has long lasting results and that will maximize your businesses profit
           </p>
-        </div>
+
       </div>
 
-      <div className='grid grid-cols-4 space-y-3 '>
+      <div className='grid grid-cols-4 space-y-3 space-x-10'>
+
 
         <Link
-        href={'/post/stuff-2'}>
-        <img
-          src='/app_dev.svg'
-          className='col-span-4 md:col-span-1 hover:cursor-pointer hover:scale-110 hover:shadow-gray-800 hover:shadow-lg'
-        />
-        </Link>
-       
-        <Link
-        href={'/post/stuff-2'}>
-        <img
-          src='/in_consult.svg'
-          className='col-span-4 md:col-span-1 hover:cursor-pointer hover:scale-110 hover:shadow-gray-800 hover:shadow-lg'
-        />
+          href={'/App_dev'}>
+          <img
+            src='/app_dev.svg'
+            className='col-span-4 md:col-span-1 hover:cursor-pointer hover:scale-110 hover:shadow-gray-800 hover:shadow-lg'
+          />
         </Link>
 
-
         <Link
-        href={'/post/stuff-2'}>
-        <img
-          src='/in_crm.svg'
-          className='col-span-4 md:col-span-1 hover:cursor-pointer hover:scale-110 hover:shadow-gray-800 hover:shadow-lg'
-        />
+          href={'/post/stuff-2'}>
+          <img
+            src='/in_consult.svg'
+            className='col-span-4 md:col-span-1 hover:cursor-pointer hover:scale-110 hover:shadow-gray-800 hover:shadow-lg'
+          />
         </Link>
 
 
         <Link
-        href={'/post/stuff-2'}>
-        <img
-          src='/in_web_dev.svg'
-          className='col-span-4 md:col-span-1 hover:cursor-pointer hover:scale-110 hover:shadow-gray-800 hover:shadow-lg'
-        />
+          href={'/post/stuff-2'}>
+          <img
+            src='/in_crm.svg'
+            className='col-span-4 md:col-span-1 hover:cursor-pointer hover:scale-110 hover:shadow-gray-800 hover:shadow-lg'
+          />
+        </Link>
+
+
+        <Link
+          href={'/post/stuff-2'}>
+          <img
+            src='/in_web_dev.svg'
+            className='col-span-4 md:col-span-1 hover:cursor-pointer hover:scale-110 hover:shadow-gray-800 hover:shadow-lg'
+          />
         </Link>
 
 
@@ -206,12 +209,12 @@ export default function Home() {
     <DefaultLayout>
       <>
 
-      <TopIn/>
+        <TopIn />
         <OurSolutions />
 
         <OurServices />
 
-       
+
 
       </>
     </DefaultLayout>

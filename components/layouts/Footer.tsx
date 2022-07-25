@@ -4,28 +4,31 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <div className="bg-primaryColour bottom-0 w-full items-center   ">
+        <div className="bg-grayColour bottom-0 w-full items-center text-primaryColour  px-10  ">
 
-            <div className="flex center grid grid-cols-3">
-
-
-                <img
-                    src="/logo.svg"
-                    className=" px-10 md:w-[180px] md:h-[200px]  "
-                />
+            <div className="flex center grid grid-cols-3 space-x-10 pt-5 pb-2">
 
 
 
-                <div className="text-white break-words">
+                <div className="hidden  lg:flex left-2 lg:w-20  ">
+                    <img src="/logo_2.svg" 
+                    alt="..." 
+                    className=""
+                    />
+                </div>
+
+
+
+                <div className=" break-words">
                     Quick links
 
 
 
                     <Link
                         href={'/'}
-                       >
+                    >
                         <div
-                         className="hover:cursor-pointer"
+                            className="hover:cursor-pointer"
                         >
                             Home
                         </div>
@@ -33,9 +36,9 @@ export default function Footer() {
 
                     <Link
                         href={'/'}
-                       >
+                    >
                         <div
-                         className="hover:cursor-pointer"
+                            className="hover:cursor-pointer"
                         >
                             Company
                         </div>
@@ -43,19 +46,19 @@ export default function Footer() {
 
                     <Link
                         href={'/'}
-                       >
+                    >
                         <div
-                         className="hover:cursor-pointer"
+                            className="hover:cursor-pointer"
                         >
-                            Services 
-                            </div>
+                            Services
+                        </div>
                     </Link>
 
                     <Link
                         href={'/'}
-                       >
+                    >
                         <div
-                         className="hover:cursor-pointer"
+                            className="hover:cursor-pointer"
                         >
                             Solutions
                         </div>
@@ -64,9 +67,9 @@ export default function Footer() {
 
                     <Link
                         href={'/'}
-                       >
+                    >
                         <div
-                         className="hover:cursor-pointer"
+                            className="hover:cursor-pointer"
                         >
                             Technologies
                         </div>
@@ -74,9 +77,9 @@ export default function Footer() {
 
                     <Link
                         href={'/'}
-                       >
+                    >
                         <div
-                         className="hover:cursor-pointer"
+                            className="hover:cursor-pointer"
                         >
                             Cloud Services
                         </div>
@@ -84,9 +87,9 @@ export default function Footer() {
 
                     <Link
                         href={'/'}
-                       >
+                    >
                         <div
-                         className="hover:cursor-pointer"
+                            className="hover:cursor-pointer"
                         >
                             Products
                         </div>
@@ -98,7 +101,7 @@ export default function Footer() {
                 </div>
 
 
-                <div className="text-white  break-words">
+                <div className="  break-words">
                     Contact Information
 
                     <div className="font-semibold">
@@ -157,7 +160,7 @@ export default function Footer() {
 
             <hr />
 
-            <div className=" text-center text-white py-5">
+            <div className=" text-center  py-5">
                 &copy; 2022. All rights reserved to Integrated Software Services Limited | ISSLNG.
 
             </div>
