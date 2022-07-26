@@ -20,8 +20,26 @@ model Post {
 }
 
 model Service {
-  id      String @id @default(cuid())
-  title   String @default("")
-  slug    String @unique @default("")
-  content String @default("")
+  id    String @id @default(cuid())
+  title String @default("")
+  slug  String @unique @default("")
+}
+
+model Test {
+  id    String @id @default(cuid())
+  title String @default("")
+  slug  String @unique @default("")
+}
+
+model Team {
+  id               String  @id @default(cuid())
+  slug             String  @unique @default("")
+  postion          String  @default("")
+  name             String  @default("")
+  content          String  @default("")
+  avatar_filesize  Int?
+  avatar_extension String?
+  avatar_width     Int?
+  avatar_height    Int?
+  avatar_id        String?
 }

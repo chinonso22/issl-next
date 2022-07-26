@@ -1,5 +1,32 @@
 import DefaultLayout from "../../components/layouts/DefaultLayout";
 import Team_Members from "./Team_Members";
+import Team_Members_Test from "./Team_Members_Test";
+
+
+
+
+import { InferGetServerSidePropsType, InferGetStaticPropsType } from "next";
+import { query } from '.keystone/api';
+import { Lists } from '.keystone/types';
+
+
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+
+// import required modules
+import { Pagination, Navigation } from "swiper";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import Link from "next/link";
 
 function Hero() {
     return (
@@ -93,8 +120,25 @@ function About() {
     )
 }
 
+type Post = {
+    id: string;
+    title: string;
+    slug: string;
+};
 
-function Team() {
+
+
+export async function getStaticProps() {
+    const posts = await query.Post.findMany({ query: 'id title slug' }) as Post[];
+    return {
+        props: {
+            posts
+        }
+    };
+}
+
+
+function Team({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
     return (
         <div className="bg-grayColour text-center items-center md:pt-12 md:pb-10 ">
 
@@ -106,20 +150,29 @@ function Team() {
                 </div>
             </div>
 
+            <div>
+                this is a list of the pages
+                {posts.map(post => (
+                    <div key={post.id}>
+                        <Link href={`/post/${post.slug}`}>
+                            <a> {post.title} </a>
+                        </Link>
 
-<Team_Members/>
+                    </div>
+                )
 
+                )
 
-
-
-
-
-
+                }
+            </div>
 
 
         </div>
     )
 }
+
+
+
 
 export default function AboutUs() {
     return (
@@ -138,7 +191,7 @@ export default function AboutUs() {
 
                     <About />
 
-                    <Team />
+                    <Team posts={[]} />
 
 
                 </div>
