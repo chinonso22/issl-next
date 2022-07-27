@@ -47,7 +47,7 @@ const Team: Lists.Team = list({
 
 
 export default config({
-  db: { provider: 'sqlite', url: process.env.DATABASE_URL ||'file:./app.db' },
+  db: { provider: 'sqlite', url: 'file:./app.db' },
   experimental: {
     generateNextGraphqlAPI: true,
     generateNodeAPI: true,
@@ -61,7 +61,7 @@ export default config({
       // This store is used for the image field type
       type: 'image',
       // The URL that is returned in the Keystone GraphQL API
-      generateUrl: path => `http:localhost:3000/images${path}`,
+      generateUrl: path => `/images${path}`,
       
       // The route that will be created in Keystone's backend to serve the images
       serverRoute: {

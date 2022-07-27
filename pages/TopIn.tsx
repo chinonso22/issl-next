@@ -87,7 +87,7 @@ export default function TopIn() {
 
               </div>
               <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
-                <img src="/bank_hero.svg" alt="mockup" />
+                <img src="/app_dev_hero.svg" alt="mockup" />
               </div>
             </div>
 
