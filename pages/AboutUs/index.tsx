@@ -26,12 +26,12 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import Link from "next/link";
 
-type ImageFieldOutput ={
+type ImageFieldOutput = {
     id: string;
-    url : string ;
-    };
+    url: string;
+};
 
-    
+
 
 type Team = {
     id: string;
@@ -39,9 +39,11 @@ type Team = {
     slug: string;
     content: string;
     postion: string;
-    avatar: {    id: string;
-        url : string ;};
-    
+    avatar: {
+        id: string;
+        url: string;
+    };
+
 
 };
 
@@ -52,7 +54,7 @@ export default function main({ teams }: InferGetStaticPropsType<typeof getStatic
 
 
                 {/* Hero Section */}
-                <div className="w-full text-center bg-grayColour md:p-20 pt-5 pb-5">
+                <div className="w-full text-center bg-grayColour md:p-20 pt-5 pb-5 relative">
 
                     <div className="text-4xl text-primaryColour">
                         We are a
@@ -74,7 +76,14 @@ export default function main({ teams }: InferGetStaticPropsType<typeof getStatic
                     </div>
 
 
+                    <div className=" ">
 
+                        <div className="hidden lg:mt-0 lg:col-span-5 lg:flex absolute left-[500px] top-[300px]">
+                            <img src="/swirl_arrow.svg" alt="profile" />
+
+                        </div>
+
+                    </div>
 
                 </div>
 
@@ -154,7 +163,7 @@ export default function main({ teams }: InferGetStaticPropsType<typeof getStatic
                         </div>
                     </div>
 
-                   
+
 
                     <Swiper
                         slidesPerView={1}
@@ -195,8 +204,8 @@ export default function main({ teams }: InferGetStaticPropsType<typeof getStatic
 
                                             <div className="lg:w-[300px] lg:pt-[150px] lg:pl-[50px] ">
                                                 <div className="hidden lg:mt-0 lg:col-span-5 lg:flex ">
-                                                    <img src={team.avatar?.url}  alt="profile" />
-                                                   
+                                                    <img src={team.avatar?.url} alt="profile" />
+
                                                 </div>
                                             </div>
 
@@ -228,7 +237,7 @@ export default function main({ teams }: InferGetStaticPropsType<typeof getStatic
 
 export async function getStaticProps() {
     const teams = await query.Team.findMany({ query: 'id name slug postion content avatar {url} ' }) as Team[];
-    
+
     return {
         props: {
             teams
