@@ -24,9 +24,15 @@ export default function PostPage({ post }: { post: Post }) {
                     title={post.title}
                     desc={post.slug}
                 />
-                <p className='text-red-700'>
+                {/* <p className='text-red-700'>
                     {post.content}
-                </p>
+                </p> */}
+
+
+                {/* i am testing the html converstion for different pages */}
+                <div className="md:p-10">
+                    <div className="" dangerouslySetInnerHTML={{ __html: post.content }} />
+                </div>
 
                 <div className="pt-10">
                     <Link href="/" >

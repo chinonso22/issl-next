@@ -9,6 +9,11 @@ const Post: Lists.Post = list({
     title: text({ validation: { isRequired: true } }),
     slug: text({ isIndexed: 'unique', isFilterable: true }),
     content: text(),
+    avatar1: image({ storage: 'my_local_images' }),
+    avatar2: image({ storage: 'my_local_images' }),
+    avatar3: image({ storage: 'my_local_images' }),
+    avatar4: image({ storage: 'my_local_images' }),
+
   },
 });
 
@@ -16,7 +21,7 @@ const Service: Lists.Service = list({
   fields: {
     title: text({ validation: { isRequired: true } }),
     slug: text({ isIndexed: 'unique', isFilterable: true }),
-  
+
 
   },
 });
@@ -35,10 +40,13 @@ const Team: Lists.Team = list({
     postion: text({ validation: { isRequired: true } }),
     name: text({ validation: { isRequired: true } }),
     content: text(),
-   avatar :image ({storage:'my_local_images'}),
+    avatar: image({ storage: 'my_local_images' }),
 
   },
 });
+
+
+
 
 
 
@@ -52,7 +60,7 @@ export default config({
     generateNextGraphqlAPI: true,
     generateNodeAPI: true,
   },
-  
+
   lists: { Post, Service, Test, Team },
   storage: {
     my_local_images: {
@@ -62,7 +70,7 @@ export default config({
       type: 'image',
       // The URL that is returned in the Keystone GraphQL API
       generateUrl: path => `/images${path}`,
-      
+
       // The route that will be created in Keystone's backend to serve the images
       serverRoute: {
         path: '/images',
