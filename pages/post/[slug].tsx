@@ -9,6 +9,9 @@ import DefaultLayout from '../../components/layouts/DefaultLayout';
 import Header from '../../components/layouts/Header';
 
 
+
+
+
 type Post = {
     id: string;
     title: string;
@@ -17,6 +20,7 @@ type Post = {
 };
 
 export default function PostPage({ post }: { post: Post }) {
+
     return (
         <DefaultLayout>
             <>

@@ -15,13 +15,20 @@ import TopIn from './TopIn';
 
 
 
+type Post = {
+  title: string;
+  slug: string;
+  id: string;
+  content: string;
+}
+
 function OurSolutions() {
   return (
     <div className='py-10 px-5 space-y-10 w-full break-words'>
 
       <div className='font-semibold text-3xl md:w-[600px]'>
         <div>
-          Our Solotions
+          Our Solutions
           <div className='bg-red-500 h-0.5 w-14' />
         </div>
 
@@ -134,7 +141,7 @@ function OurSolutions() {
 
 
 
-
+      
     </div>
   )
 };
@@ -153,8 +160,8 @@ function OurServices() {
         </div>
 
         <p className='font-normal text-lg pt-5'>
-            We offer quality and assured services that has long lasting results and that will maximize your businesses profit
-          </p>
+          We offer quality and assured services that has long lasting results and that will maximize your businesses profit
+        </p>
 
       </div>
 
@@ -204,6 +211,11 @@ function OurServices() {
   )
 }
 
+
+
+
+
+
 export default function Home() {
   return (
     <DefaultLayout>
@@ -214,11 +226,10 @@ export default function Home() {
 
         <OurServices />
 
-
+      
 
       </>
     </DefaultLayout>
   )
 }
-
 

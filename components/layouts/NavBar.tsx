@@ -1,12 +1,34 @@
 import Link from 'next/link';
 import { useState } from 'react';
+import { InferGetStaticPropsType } from 'next';
 
-export const Navbar = () => {
-  const [active, setActive] = useState(false);
+//dropdown styling
 
-  const handleClick = () => {
-    setActive(!active);
-  };
+import { Fragment } from 'react'
+import { Menu, Transition } from '@headlessui/react'
+import { ChevronDownIcon } from '@heroicons/react/solid'
+
+
+
+import { query } from '.keystone/api';
+import { Lists } from '.keystone/types';
+
+
+
+
+type Post = {
+  id: string;
+  title: string;
+  slug: string;
+};
+
+export const Navbar =()=> {
+  
+const [active, setActive] = useState(false);
+
+const handleClick = () => {
+  setActive(!active);
+};
 
   return (
     <>
@@ -24,9 +46,9 @@ export const Navbar = () => {
             </svg> */}
 
             <img
-            src="/logo.svg"
+              src="/logo.svg"
             />
-           
+
           </a>
         </Link>
 
@@ -34,7 +56,7 @@ export const Navbar = () => {
           className=' inline-flex p-3 hover:primaryColour rounded lg:hidden text-white ml-auto hover:text-white outline-none'
           onClick={handleClick}
         >
-            
+
           <svg
             className='w-6 h-6'
             fill='none'
@@ -53,48 +75,117 @@ export const Navbar = () => {
 
 
 
-        
+
         {/*Note that in this div we will use a ternary operator to decide whether or not to display the content of the div  */}
         <div
-          className={`${
-            active ? '' : 'hidden'
-          }   w-full lg:inline-flex lg:flex-grow lg:w-auto`}
+          className={`${active ? '' : 'hidden'
+            }   w-full lg:inline-flex lg:flex-grow lg:w-auto`}
         >
           <div className='lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start  flex flex-col lg:h-auto'>
-           
+
             <Link href='/'>
               <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-grayColour hover:text-primaryColour '>
                 Home
               </a>
             </Link>
-           
+
             <Link href='/'>
               <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-grayColour hover:text-primaryColour'>
                 Services
               </a>
             </Link>
 
+
+
+
+
+            <Menu as="div" className="relative inline-block text-center w-full">
+              <div>
+                <Menu.Button className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-grayColour hover:text-primaryColour text-left">
+                  Options 2
+                  {/* <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" /> */}
+                </Menu.Button>
+              </div>
+
+              <Transition
+                as={Fragment}
+                enter="transition ease-out duration-100"
+                enterFrom="transform opacity-0 scale-95"
+                enterTo="transform opacity-100 scale-100"
+                leave="transition ease-in duration-75"
+                leaveFrom="transform opacity-100 scale-100"
+                leaveTo="transform opacity-0 scale-95"
+              >
+                <Menu.Items className="origin-top-right absolute right-0 mt-2  rounded-md  bg-white ring-1 ring-black ring-opacity-5 focus:outline-none w-full md:w-56">
+                  <div className="py-1">
+
+
+                    <Menu.Item>
+                      
+                        <Link
+                          href="/App_dev"
+
+                        >
+                          <a
+                           className= ' block px-4 py-2 text-primaryColour hover:bg-primaryColour hover:text-white text-base '
+                          >
+                            Support
+                          </a>
+
+                        </Link>
+                     
+                    </Menu.Item>
+
+                    <Menu.Item>
+
+                    <Link
+                          href="/AboutUs"
+
+                        >
+                          <a
+                           className= ' block px-4 py-2 text-primaryColour hover:bg-primaryColour hover:text-white text-base '
+                          >
+                            License 
+                          </a>
+
+                        </Link>
+                      
+                    </Menu.Item>
+
+                  </div>
+                </Menu.Items>
+              </Transition>
+            </Menu>
+
             <Link href='/'>
               <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-grayColour hover:text-primaryColour'>
                 Solutions
               </a>
             </Link>
-           
+
             <Link href='/AboutUs'>
               <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-grayColour hover:text-primaryColour'>
                 About us
               </a>
             </Link>
-            
+
             <Link href='/'>
               <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-grayColour hover:text-primaryColour'>
                 Contact us
               </a>
             </Link>
-         
+
+           
+
           </div>
         </div>
       </nav>
     </>
   );
-};
+
+  
+}
+
+
+
+

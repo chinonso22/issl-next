@@ -164,7 +164,7 @@ export default function Footer() {
                 &copy; 2022. All rights reserved to Integrated Software Services Limited | ISSLNG.
 
             </div>
-
+           
         </div>
     )
 }
