@@ -9,8 +9,6 @@ import { Fragment } from "react";
 
 import { useState } from 'react';
 
-// import NavBar2 from './NavBar2';
-
 
 
 function DefaultLayout({ children }: { children?: JSX.Element }) {
@@ -22,7 +20,7 @@ function DefaultLayout({ children }: { children?: JSX.Element }) {
 
             <div className="bg-primaryColour w-full overscroll-x-auto  ">
                 
-                {/* <NavBar2 posts={[]}/> */}
+             
                 <div className="bg-white w-full">
                     <main>
 

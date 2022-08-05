@@ -9,7 +9,7 @@ import DefaultLayout from '../../components/layouts/DefaultLayout';
 import Header from '../../components/layouts/Header';
 
 
-
+import NavBar2 from "../NavBar2";
 
 
 type Post = {
@@ -19,19 +19,29 @@ type Post = {
     slug: string;
 };
 
-export default function PostPage({ post }: { post: Post }) {
+
+type mainProps = {
+    post: Post;
+    posts: InferGetStaticPropsType<typeof getStaticProps>
+}
+type posts = {
+    posts: InferGetStaticPropsType<typeof getStaticProps>
+}
+export default function PostPage({ post, posts }: { post: Post, posts: any }) {
 
     return (
         <DefaultLayout>
             <>
+                <NavBar2 posts={posts} />
+
+
+                {/* <p className='text-red-700'>
+                    {post.content}
+                </p> */}
                 <Header
                     title={post.title}
                     desc={post.slug}
                 />
-                {/* <p className='text-red-700'>
-                    {post.content}
-                </p> */}
-
 
                 {/* i am testing the html converstion for different pages */}
                 <div className="md:p-10">
@@ -51,21 +61,6 @@ export default function PostPage({ post }: { post: Post }) {
     )
 }
 
-// export default function PostPage({ post }: { post: Post }) {
-//     return (
-//         <div>
-//             <main style={{ margin: '3rem' }}>
-//                 <div>
-//                     <Link href="/">
-//                         <a>&larr; back home</a>
-//                     </Link>
-//                 </div>
-//                 <h1>{post.title}</h1>
-//                 <p>{post.content}</p>
-//             </main>
-//         </div>
-//     );
-// }
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
     const posts = (await query.Post.findMany({
@@ -90,5 +85,14 @@ export async function getStaticProps({ params }: GetStaticPropsContext) {
     if (!post) {
         return { notFound: true };
     }
-    return { props: { post } };
+    const posts = await query.Post.findMany({ query: 'title slug content id' }) as Post[] | posts;
+
+
+
+    return {
+        props: {
+            post,
+            posts
+        }
+    };
 }

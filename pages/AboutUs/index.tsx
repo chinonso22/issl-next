@@ -26,10 +26,12 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import Link from "next/link";
 
-type ImageFieldOutput = {
-    id: string;
-    url: string;
-};
+type Post ={
+    id: string
+    content: string
+    slug: string
+    title: string
+}
 
 
 
@@ -47,12 +49,26 @@ type Team = {
 
 };
 
-export default function main({ teams }: InferGetStaticPropsType<typeof getStaticProps>) {
+
+import NavBar2 from "../NavBar2";
+
+// type NavBar2Props = {
+//     teams: 
+//     staticProps: InferGetStaticPropsType
+// }
+
+
+type mainProps ={
+    teams: InferGetStaticPropsType<typeof getStaticProps>
+    posts: InferGetStaticPropsType<typeof getStaticProps>
+}
+
+export default function main({ teams, posts }: InferGetStaticPropsType<typeof getStaticProps>) {
     return (
         <DefaultLayout>
             <>
 
-
+            <NavBar2 posts={posts}   />
                 {/* Hero Section */}
                 <div className="w-full text-center bg-grayColour md:p-20 pt-5 pb-5 relative">
 
@@ -237,10 +253,12 @@ export default function main({ teams }: InferGetStaticPropsType<typeof getStatic
 
 export async function getStaticProps() {
     const teams = await query.Team.findMany({ query: 'id name slug postion content avatar {url} ' }) as Team[];
+    const posts = await query.Post.findMany({ query: 'title slug content id' }) as Post[];
 
     return {
         props: {
-            teams
+            teams,
+            posts
         }
     };
 }
