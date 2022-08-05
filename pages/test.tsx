@@ -30,11 +30,11 @@ import Link from "next/link";
 
 //dropdown styling
 
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 
-
+import NavBar2 from './NavBar2';
 
 type ImageFieldOutput = {
     id: string;
@@ -66,11 +66,13 @@ type Team = {
 
 
 export default function main({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
+
+   
     return (
         <DefaultLayout>
             <>
 
-
+               <NavBar2 posts={posts}/>
 
                 <div>   this is the test page</div>
 

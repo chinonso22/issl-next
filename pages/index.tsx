@@ -13,7 +13,7 @@ import TopIn from './TopIn';
 
 
 
-
+import NavBar2 from "./NavBar2"
 
 type Post = {
   title: string;
@@ -220,7 +220,7 @@ export default function Home() {
   return (
     <DefaultLayout>
       <>
-
+{/* <NavBar2 posts={[]}/> */}
         <TopIn />
         <OurSolutions />
 
