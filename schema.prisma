@@ -40,15 +40,10 @@ model Post {
 }
 
 model Service {
-  id    String @id @default(cuid())
-  title String @default("")
-  slug  String @unique @default("")
-}
-
-model Test {
-  id    String @id @default(cuid())
-  title String @default("")
-  slug  String @unique @default("")
+  id      String @id @default(cuid())
+  title   String @default("")
+  slug    String @unique @default("")
+  content String @default("")
 }
 
 model Team {
@@ -62,4 +57,18 @@ model Team {
   avatar_width     Int?
   avatar_height    Int?
   avatar_id        String?
+}
+
+model Product {
+  id      String @id @default(cuid())
+  title   String @default("")
+  slug    String @unique @default("")
+  content String @default("")
+}
+
+model Solution {
+  id      String @id @default(cuid())
+  title   String @default("")
+  slug    String @unique @default("")
+  content String @default("")
 }

@@ -7,17 +7,33 @@ import { Fragment, useState } from "react";
 import query from '.keystone/api'
 import { InferGetStaticPropsType } from "next";
 
-type Post = {
+
+
+type Solution ={
     id: string;
-    content: string
-    title: string
-    slug: string
+    title: string;
+    content: string;
+    slug: string;
 }
 
-type NavBar2Props ={posts:Post[] }
+type Service={
+    id: string;
+    title: string;
+    content: string;
+    slug: string;
+
+}
+
+type Product={
+    id: string;
+    title: string;
+    content: string;
+    slug: string;
+}
+type NavBar2Props ={ solutions:Solution[], services:Service[], products:Product[] }
 
 
-export default function NavBar2({ posts }: NavBar2Props  ) {
+export default function NavBar2({ products, solutions, services }: NavBar2Props  ) {
   
     
     
@@ -85,20 +101,10 @@ export default function NavBar2({ posts }: NavBar2Props  ) {
                             </a>
                         </Link>
 
-                        <Link href='/'>
-                            <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-grayColour hover:text-primaryColour'>
-                                Services
-                            </a>
-                        </Link>
-
-
-
-
-
                         <Menu as="div" className="relative inline-block text-center w-full ">
                             <div>
-                                <Menu.Button className="bg-red-500 lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center  hover:bg-grayColour hover:text-primaryColour text-left">
-                                    Options 2
+                                <Menu.Button className=" lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center  hover:bg-grayColour hover:text-primaryColour text-left">
+                                    Services 
                                     {/* <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" /> */}
                                 </Menu.Button>
                             </div>
@@ -114,19 +120,19 @@ export default function NavBar2({ posts }: NavBar2Props  ) {
                             >
                                 <Menu.Items className="origin-top-right absolute right-0 mt-2  rounded-md  bg-white ring-1 ring-black ring-opacity-5 focus:outline-none w-full md:w-56 z-10">
                                     <div className="py-1">
-                                        {posts.map(post => (
-                                            <div key={post.id}>
+                                        {services.map(service => (
+                                            <div key={service.id}>
 
                                                 <Menu.Item>
 
                                                     <Link
-                                                        href={`/post/${post.slug}`}
+                                                        href={`/Service/${service.slug}`}
 
                                                     >
                                                         <a
                                                             className=' block px-4 py-2 text-primaryColour hover:bg-primaryColour hover:text-white text-base '
                                                         >
-                                                            {post.title}
+                                                            {service.title}
                                                         </a>
 
                                                     </Link>
@@ -145,20 +151,116 @@ export default function NavBar2({ posts }: NavBar2Props  ) {
                         </Menu>
 
 
-                        <Link href='/'>
-                            <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-grayColour hover:text-primaryColour'>
-                                Solutions
-                            </a>
-                        </Link>
+
+
+
+                        <Menu as="div" className="relative inline-block text-center w-full ">
+                            <div>
+                                <Menu.Button className=" lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center  hover:bg-grayColour hover:text-primaryColour text-left">
+                                    Solutions
+                                    {/* <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" /> */}
+                                </Menu.Button>
+                            </div>
+
+                            <Transition
+                                as={Fragment}
+                                enter="transition ease-out duration-100"
+                                enterFrom="transform opacity-0 scale-95"
+                                enterTo="transform opacity-100 scale-100"
+                                leave="transition ease-in duration-75"
+                                leaveFrom="transform opacity-100 scale-100"
+                                leaveTo="transform opacity-0 scale-95"
+                            >
+                                <Menu.Items className="origin-top-right absolute right-0 mt-2  rounded-md  bg-white ring-1 ring-black ring-opacity-5 focus:outline-none w-full md:w-56 z-10">
+                                    <div className="py-1">
+                                        {solutions.map(solution => (
+                                            <div key={solution.id}>
+
+                                                <Menu.Item>
+
+                                                    <Link
+                                                        href={`/Solution/${solution.slug}`}
+
+                                                    >
+                                                        <a
+                                                            className=' block px-4 py-2 text-primaryColour hover:bg-primaryColour hover:text-white text-base '
+                                                        >
+                                                            {solution.title}
+                                                        </a>
+
+                                                    </Link>
+
+                                                </Menu.Item>
+                                            </div>
+                                        ))}
+
+
+
+
+
+                                    </div>
+                                </Menu.Items>
+                            </Transition>
+                        </Menu>
+
+
+                        <Menu as="div" className="relative inline-block text-center w-full ">
+                            <div>
+                                <Menu.Button className=" lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center  hover:bg-grayColour hover:text-primaryColour text-left">
+                                    Products
+                                    {/* <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" /> */}
+                                </Menu.Button>
+                            </div>
+
+                            <Transition
+                                as={Fragment}
+                                enter="transition ease-out duration-100"
+                                enterFrom="transform opacity-0 scale-95"
+                                enterTo="transform opacity-100 scale-100"
+                                leave="transition ease-in duration-75"
+                                leaveFrom="transform opacity-100 scale-100"
+                                leaveTo="transform opacity-0 scale-95"
+                            >
+                                <Menu.Items className="origin-top-right absolute right-0 mt-2  rounded-md  bg-white ring-1 ring-black ring-opacity-5 focus:outline-none w-full md:w-56 z-10">
+                                    <div className="py-1">
+                                        {products.map(product => (
+                                            <div key={product.id}>
+
+                                                <Menu.Item>
+
+                                                    <Link
+                                                        href={`/Product/${product.slug}`}
+
+                                                    >
+                                                        <a
+                                                            className=' block px-4 py-2 text-primaryColour hover:bg-primaryColour hover:text-white text-base '
+                                                        >
+                                                            {product.title}
+                                                        </a>
+
+                                                    </Link>
+
+                                                </Menu.Item>
+                                            </div>
+                                        ))}
+
+
+
+
+
+                                    </div>
+                                </Menu.Items>
+                            </Transition>
+                        </Menu>
 
                         <Link href='/AboutUs'>
-                            <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-grayColour hover:text-primaryColour'>
+                            <a className='lg:inline-flex lg:w-auto w-full px-4 py-2 rounded text-white font-bold items-center justify-center hover:bg-grayColour hover:text-primaryColour'>
                                 About us
                             </a>
                         </Link>
 
                         <Link href='/'>
-                            <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-grayColour hover:text-primaryColour'>
+                            <a className='lg:inline-flex lg:w-auto w-full px-5 py-2 rounded text-white font-bold items-center justify-center hover:bg-grayColour hover:text-primaryColour'>
                                 Contact us
                             </a>
                         </Link>

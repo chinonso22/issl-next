@@ -21,17 +21,31 @@ const Service: Lists.Service = list({
   fields: {
     title: text({ validation: { isRequired: true } }),
     slug: text({ isIndexed: 'unique', isFilterable: true }),
-
+    content: text(),
 
   },
 });
 
-const Test: Lists.Test = list({
+const Product: Lists.Product = list({
   fields: {
     title: text({ validation: { isRequired: true } }),
     slug: text({ isIndexed: 'unique', isFilterable: true }),
+    content: text(),
+
   },
 });
+
+
+const Solution: Lists.Solution = list({
+  fields: {
+    title: text({ validation: { isRequired: true } }),
+    slug: text({ isIndexed: 'unique', isFilterable: true }),
+    content: text(),
+
+  },
+});
+
+
 
 
 const Team: Lists.Team = list({
@@ -61,7 +75,7 @@ export default config({
     generateNodeAPI: true,
   },
 
-  lists: { Post, Service, Test, Team },
+  lists: { Post, Service, Team, Product, Solution },
   storage: {
     my_local_images: {
       // Images that use this store will be stored on the local machine

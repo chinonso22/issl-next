@@ -5,7 +5,21 @@ import NavBar2 from "./NavBar2";
 import { InferGetStaticPropsType } from "next";
 
 
-type Post = {
+type Product = {
+    title: string;
+    slug: string;
+    id: string;
+    content: string;
+}
+
+type Service ={
+    title: string;
+    slug: string;
+    id: string;
+    content: string;
+}
+
+type Solution ={
     title: string;
     slug: string;
     id: string;
@@ -13,14 +27,16 @@ type Post = {
 }
 
 
-export default function Custom404({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
+
+export default function Custom404({ products, solutions, services }: InferGetStaticPropsType<typeof getStaticProps>) {
     return (
         <>
 
             <DefaultLayout>
                 
                 <>
-                <NavBar2 posts={posts}   />
+                <NavBar2 products={products} services={services} solutions={solutions} />
+               
                 <div className="text-center p-20 text-3xl">
                     404 - PAGE NOT FOUND
                 
@@ -39,13 +55,16 @@ export default function Custom404({ posts }: InferGetStaticPropsType<typeof getS
 
 
 
-
 export async function getStaticProps() {
-    const posts = await query.Post.findMany({ query: 'title slug content id' }) as Post[];
+    const products = await query.Product.findMany({ query: 'title slug content id' }) as Product[] ;
+    const services = await query.Service.findMany({query:'title slug content id'}) as Service[] ;
+    const solutions = await query.Solution.findMany({ query:'title slug content id' }) as Solution[] ;
 
     return {
         props: {
-            posts
+            products,
+            services,
+            solutions
         }
     };
 }

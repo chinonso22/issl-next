@@ -26,12 +26,6 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import Link from "next/link";
 
-type Post ={
-    id: string
-    content: string
-    slug: string
-    title: string
-}
 
 
 
@@ -58,18 +52,13 @@ import NavBar2 from "../NavBar2";
 // }
 
 
-type mainProps ={
-    teams: InferGetStaticPropsType<typeof getStaticProps>
-    posts: InferGetStaticPropsType<typeof getStaticProps>
-}
-
-export default function main({ teams, posts }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function main({ teams, products, services, solutions }: InferGetStaticPropsType<typeof getStaticProps>) {
     return (
         <DefaultLayout>
             <>
 
-            <NavBar2 posts={posts}   />
-                {/* Hero Section */}
+            <NavBar2 products={products} services={services} solutions={solutions} />
+                 {/* Hero Section */}
                 <div className="w-full text-center bg-grayColour md:p-20 pt-5 pb-5 relative">
 
                     <div className="text-4xl text-primaryColour">
@@ -253,12 +242,16 @@ export default function main({ teams, posts }: InferGetStaticPropsType<typeof ge
 
 export async function getStaticProps() {
     const teams = await query.Team.findMany({ query: 'id name slug postion content avatar {url} ' }) as Team[];
-    const posts = await query.Post.findMany({ query: 'title slug content id' }) as Post[];
+    const products = await query.Product.findMany({ query: 'title slug content id' }) as Product[] ;
+    const services = await query.Service.findMany({query:'title slug content id'}) as Service[] ;
+    const solutions = await query.Solution.findMany({ query:'title slug content id' }) as Solution[] ;
 
     return {
         props: {
             teams,
-            posts
+            products,
+            services,
+            solutions
         }
     };
 }

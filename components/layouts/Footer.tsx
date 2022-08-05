@@ -45,7 +45,7 @@ export default function Footer() {
                     </Link>
 
                     <Link
-                        href={'/'}
+                        href={'/Service/index'}
                     >
                         <div
                             className="hover:cursor-pointer"
@@ -55,7 +55,7 @@ export default function Footer() {
                     </Link>
 
                     <Link
-                        href={'/'}
+                        href={'/Solution/index'}
                     >
                         <div
                             className="hover:cursor-pointer"
@@ -86,7 +86,7 @@ export default function Footer() {
                     </Link>
 
                     <Link
-                        href={'/'}
+                        href={'/Product/index'}
                     >
                         <div
                             className="hover:cursor-pointer"

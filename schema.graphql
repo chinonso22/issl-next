@@ -132,6 +132,7 @@ type Service {
   id: ID!
   title: String
   slug: String
+  content: String
 }
 
 input ServiceWhereUniqueInput {
@@ -146,17 +147,20 @@ input ServiceWhereInput {
   id: IDFilter
   title: StringFilter
   slug: StringFilter
+  content: StringFilter
 }
 
 input ServiceOrderByInput {
   id: OrderDirection
   title: OrderDirection
   slug: OrderDirection
+  content: OrderDirection
 }
 
 input ServiceUpdateInput {
   title: String
   slug: String
+  content: String
 }
 
 input ServiceUpdateArgs {
@@ -167,47 +171,7 @@ input ServiceUpdateArgs {
 input ServiceCreateInput {
   title: String
   slug: String
-}
-
-type Test {
-  id: ID!
-  title: String
-  slug: String
-}
-
-input TestWhereUniqueInput {
-  id: ID
-  slug: String
-}
-
-input TestWhereInput {
-  AND: [TestWhereInput!]
-  OR: [TestWhereInput!]
-  NOT: [TestWhereInput!]
-  id: IDFilter
-  title: StringFilter
-  slug: StringFilter
-}
-
-input TestOrderByInput {
-  id: OrderDirection
-  title: OrderDirection
-  slug: OrderDirection
-}
-
-input TestUpdateInput {
-  title: String
-  slug: String
-}
-
-input TestUpdateArgs {
-  where: TestWhereUniqueInput!
-  data: TestUpdateInput!
-}
-
-input TestCreateInput {
-  title: String
-  slug: String
+  content: String
 }
 
 type Team {
@@ -264,6 +228,98 @@ input TeamCreateInput {
   avatar: ImageFieldInput
 }
 
+type Product {
+  id: ID!
+  title: String
+  slug: String
+  content: String
+}
+
+input ProductWhereUniqueInput {
+  id: ID
+  slug: String
+}
+
+input ProductWhereInput {
+  AND: [ProductWhereInput!]
+  OR: [ProductWhereInput!]
+  NOT: [ProductWhereInput!]
+  id: IDFilter
+  title: StringFilter
+  slug: StringFilter
+  content: StringFilter
+}
+
+input ProductOrderByInput {
+  id: OrderDirection
+  title: OrderDirection
+  slug: OrderDirection
+  content: OrderDirection
+}
+
+input ProductUpdateInput {
+  title: String
+  slug: String
+  content: String
+}
+
+input ProductUpdateArgs {
+  where: ProductWhereUniqueInput!
+  data: ProductUpdateInput!
+}
+
+input ProductCreateInput {
+  title: String
+  slug: String
+  content: String
+}
+
+type Solution {
+  id: ID!
+  title: String
+  slug: String
+  content: String
+}
+
+input SolutionWhereUniqueInput {
+  id: ID
+  slug: String
+}
+
+input SolutionWhereInput {
+  AND: [SolutionWhereInput!]
+  OR: [SolutionWhereInput!]
+  NOT: [SolutionWhereInput!]
+  id: IDFilter
+  title: StringFilter
+  slug: StringFilter
+  content: StringFilter
+}
+
+input SolutionOrderByInput {
+  id: OrderDirection
+  title: OrderDirection
+  slug: OrderDirection
+  content: OrderDirection
+}
+
+input SolutionUpdateInput {
+  title: String
+  slug: String
+  content: String
+}
+
+input SolutionUpdateArgs {
+  where: SolutionWhereUniqueInput!
+  data: SolutionUpdateInput!
+}
+
+input SolutionCreateInput {
+  title: String
+  slug: String
+  content: String
+}
+
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
@@ -288,18 +344,30 @@ type Mutation {
   updateServices(data: [ServiceUpdateArgs!]!): [Service]
   deleteService(where: ServiceWhereUniqueInput!): Service
   deleteServices(where: [ServiceWhereUniqueInput!]!): [Service]
-  createTest(data: TestCreateInput!): Test
-  createTests(data: [TestCreateInput!]!): [Test]
-  updateTest(where: TestWhereUniqueInput!, data: TestUpdateInput!): Test
-  updateTests(data: [TestUpdateArgs!]!): [Test]
-  deleteTest(where: TestWhereUniqueInput!): Test
-  deleteTests(where: [TestWhereUniqueInput!]!): [Test]
   createTeam(data: TeamCreateInput!): Team
   createTeams(data: [TeamCreateInput!]!): [Team]
   updateTeam(where: TeamWhereUniqueInput!, data: TeamUpdateInput!): Team
   updateTeams(data: [TeamUpdateArgs!]!): [Team]
   deleteTeam(where: TeamWhereUniqueInput!): Team
   deleteTeams(where: [TeamWhereUniqueInput!]!): [Team]
+  createProduct(data: ProductCreateInput!): Product
+  createProducts(data: [ProductCreateInput!]!): [Product]
+  updateProduct(
+    where: ProductWhereUniqueInput!
+    data: ProductUpdateInput!
+  ): Product
+  updateProducts(data: [ProductUpdateArgs!]!): [Product]
+  deleteProduct(where: ProductWhereUniqueInput!): Product
+  deleteProducts(where: [ProductWhereUniqueInput!]!): [Product]
+  createSolution(data: SolutionCreateInput!): Solution
+  createSolutions(data: [SolutionCreateInput!]!): [Solution]
+  updateSolution(
+    where: SolutionWhereUniqueInput!
+    data: SolutionUpdateInput!
+  ): Solution
+  updateSolutions(data: [SolutionUpdateArgs!]!): [Solution]
+  deleteSolution(where: SolutionWhereUniqueInput!): Solution
+  deleteSolutions(where: [SolutionWhereUniqueInput!]!): [Solution]
 }
 
 type Query {
@@ -319,14 +387,6 @@ type Query {
   ): [Service!]
   service(where: ServiceWhereUniqueInput!): Service
   servicesCount(where: ServiceWhereInput! = {}): Int
-  tests(
-    where: TestWhereInput! = {}
-    orderBy: [TestOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-  ): [Test!]
-  test(where: TestWhereUniqueInput!): Test
-  testsCount(where: TestWhereInput! = {}): Int
   teams(
     where: TeamWhereInput! = {}
     orderBy: [TeamOrderByInput!]! = []
@@ -335,6 +395,22 @@ type Query {
   ): [Team!]
   team(where: TeamWhereUniqueInput!): Team
   teamsCount(where: TeamWhereInput! = {}): Int
+  products(
+    where: ProductWhereInput! = {}
+    orderBy: [ProductOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+  ): [Product!]
+  product(where: ProductWhereUniqueInput!): Product
+  productsCount(where: ProductWhereInput! = {}): Int
+  solutions(
+    where: SolutionWhereInput! = {}
+    orderBy: [SolutionOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+  ): [Solution!]
+  solution(where: SolutionWhereUniqueInput!): Solution
+  solutionsCount(where: SolutionWhereInput! = {}): Int
   keystone: KeystoneMeta!
 }
 

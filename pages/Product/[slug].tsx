@@ -12,40 +12,56 @@ import Header from '../../components/layouts/Header';
 import NavBar2 from "../NavBar2";
 
 
-type Post = {
+type Service = {
     id: string;
     title: string;
     content: string;
     slug: string;
 };
 
+type Product = {
+    id: string;
+    title: string;
+    content: string;
+    slug: string;
+}
 
-type mainProps = {
-    post: Post;
-    posts: InferGetStaticPropsType<typeof getStaticProps>
+type Solution = {
+    id: string;
+    title: string;
+    content: string;
+    slug: string;
 }
-type posts = {
-    posts: InferGetStaticPropsType<typeof getStaticProps>
+
+type products = {
+    produts: InferGetStaticPropsType<typeof getStaticProps>
 }
-export default function PostPage({ post, posts }: { post: Post, posts: any }) {
+type services = {
+    services: InferGetStaticPropsType<typeof getStaticProps>
+}
+type solutions = {
+    solutions: InferGetStaticPropsType<typeof getStaticProps>
+}
+
+export default function Products({ product, services, solutions, products }: { product: Product, products: any, services: any, solutions: any }) {
 
     return (
         <DefaultLayout>
             <>
-                <NavBar2 posts={posts} />
+                <NavBar2 products={products} services={services} solutions={solutions} />
 
 
                 {/* <p className='text-red-700'>
                     {post.content}
                 </p> */}
                 <Header
-                    title={post.title}
-                    desc={post.slug}
+                    title={product.title}
+                    desc={product.slug}
                 />
 
                 {/* i am testing the html converstion for different pages */}
                 <div className="md:p-10">
-                    <div className="" dangerouslySetInnerHTML={{ __html: post.content }} />
+                    <div className="" dangerouslySetInnerHTML={{ __html: product.content }} />
                 </div>
 
                 <div className="pt-10">
@@ -63,13 +79,14 @@ export default function PostPage({ post, posts }: { post: Post, posts: any }) {
 
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
-    const posts = (await query.Post.findMany({
+    const products = (await query.Product.findMany({
+
         query: `slug`,
     })) as { slug: string }[];
 
-    const paths = posts
+    const paths = products
         .filter(({ slug }) => !!slug)
-        .map(({ slug }) => `/post/${slug}`);
+        .map(({ slug }) => `/Product/${slug}`);
 
     return {
         paths,
@@ -78,21 +95,26 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
 }
 
 export async function getStaticProps({ params }: GetStaticPropsContext) {
-    const post = (await query.Post.findOne({
+    const product = (await query.Product.findOne({
         where: { slug: params!.slug as string },
         query: 'id title content slug',
-    })) as Post | null;
-    if (!post) {
+    })) as Product | null;
+    if (!product) {
         return { notFound: true };
     }
-    const posts = await query.Post.findMany({ query: 'title slug content id' }) as Post[] | posts;
 
+    //for navbar
+    const products = await query.Product.findMany({ query: 'title slug content id' }) as Product[] | products;
+    const solutions = await query.Solution.findMany({ query: 'title slug content id' }) as Solution[] | solutions;
+    const services = await query.Service.findMany({ query: "id content slug title " }) as Service[] | services;
 
 
     return {
         props: {
-            post,
-            posts
+            product,
+            products,
+            services,
+            solutions
         }
     };
 }
