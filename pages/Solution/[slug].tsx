@@ -10,7 +10,7 @@ import Header from '../../components/layouts/Header';
 
 
 import NavBar2 from "../NavBar2";
-
+import Head from "next/head";
 
 
 type Solution = {
@@ -51,28 +51,16 @@ export default function Solutions({ solution, products, solutions, services }: {
         <DefaultLayout>
             <>
                 <NavBar2 products={products} services={services} solutions={solutions} />
+                <Head>
+                    <meta name='og:description' content='this is the seo thing' />
+                    <title> ISSL {solution.title} </title>
+                </Head>
 
-
-                {/* <p className='text-red-700'>
-                    {post.content}
-                </p> */}
-                <Header
-                    title={solution.title}
-                    desc={solution.slug}
-                />
-
-                {/* i am testing the html converstion for different pages */}
                 <div className="md:p-10">
                     <div className="" dangerouslySetInnerHTML={{ __html: solution.content }} />
                 </div>
 
-                <div className="pt-10">
-                    <Link href="/" >
-                        <a className='text-primaryColour font-bold'>
-                            &larr; back home
-                        </a>
-                    </Link>
-                </div>
+
             </>
 
         </DefaultLayout>

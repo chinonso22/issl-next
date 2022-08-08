@@ -10,7 +10,7 @@ import Header from '../../components/layouts/Header';
 
 
 import NavBar2 from "../NavBar2";
-
+import Head from "next/head";
 
 type Product = {
     id: string;
@@ -49,29 +49,18 @@ export default function Services({ service, products, services, solutions }: { s
     return (
         <DefaultLayout>
             <>
+            <Head>
+                <title> ISSL {service.title} </title>
+            </Head>
                 <NavBar2 products={products} services={services} solutions={solutions} />
 
 
-                {/* <p className='text-red-700'>
-                    {post.content}
-                </p> */}
-                <Header
-                    title={service.title}
-                    desc={service.slug}
-                />
 
-                {/* i am testing the html converstion for different pages */}
                 <div className="md:p-10">
                     <div className="" dangerouslySetInnerHTML={{ __html: service.content }} />
                 </div>
 
-                <div className="pt-10">
-                    <Link href="/" >
-                        <a className='text-primaryColour font-bold'>
-                            &larr; back home
-                        </a>
-                    </Link>
-                </div>
+             
             </>
 
         </DefaultLayout>

@@ -29,6 +29,7 @@ function DefaultLayout({ children }: { children?: JSX.Element }) {
 
                             <link rel="icon" href="/logo_2.ico" />
                             <meta name="viewport" content="width=device-width, initial-scale=1" />
+                          
                         </Head>
 
 

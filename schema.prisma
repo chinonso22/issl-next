@@ -12,33 +12,6 @@ generator client {
   output   = "node_modules/.prisma/client"
 }
 
-model Post {
-  id                String  @id @default(cuid())
-  title             String  @default("")
-  slug              String  @unique @default("")
-  content           String  @default("")
-  avatar1_filesize  Int?
-  avatar1_extension String?
-  avatar1_width     Int?
-  avatar1_height    Int?
-  avatar1_id        String?
-  avatar2_filesize  Int?
-  avatar2_extension String?
-  avatar2_width     Int?
-  avatar2_height    Int?
-  avatar2_id        String?
-  avatar3_filesize  Int?
-  avatar3_extension String?
-  avatar3_width     Int?
-  avatar3_height    Int?
-  avatar3_id        String?
-  avatar4_filesize  Int?
-  avatar4_extension String?
-  avatar4_width     Int?
-  avatar4_height    Int?
-  avatar4_id        String?
-}
-
 model Service {
   id      String @id @default(cuid())
   title   String @default("")
@@ -71,4 +44,12 @@ model Solution {
   title   String @default("")
   slug    String @unique @default("")
   content String @default("")
+}
+
+model User {
+  id       String  @id @default(cuid())
+  email    String  @default("")
+  name     String  @unique @default("")
+  password String?
+  isAdmin  Boolean @default(false)
 }
