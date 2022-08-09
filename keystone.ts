@@ -22,7 +22,7 @@ import { SESSION_SECRET } from './config';
 //   },
 // });
 
-let sessionMaxAge = 60 * 60 * 24 * 2 ; // 1 day
+// let sessionMaxAge = 60 * 60 * 24 * 1000; // 2 day
 
 const isAdmin = ({ session }: { session: Session }) => session?.data.isAdmin;
 
@@ -33,9 +33,9 @@ type Session = {
   }
 };
 const session = statelessSessions({
-  maxAge: sessionMaxAge,
+  // maxAge: sessionMaxAge,
   // The session secret is used to encrypt cookie data (should be an environment variable)
-  secret: SESSION_SECRET,
+  secret: "",
 });
 
 const { withAuth } = createAuth({

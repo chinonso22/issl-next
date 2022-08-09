@@ -59,7 +59,7 @@ export default function main({ teams, products, services, solutions }: InferGetS
                 <Head>
                     <title> ISSL AboutUs </title>
 
-                    <meta  name="description" content="" />
+                    <meta name="description" content="" />
                 </Head>
                 <NavBar2 products={products} services={services} solutions={solutions} />
                 {/* Hero Section */}
@@ -69,6 +69,7 @@ export default function main({ teams, products, services, solutions }: InferGetS
                         We are a
                         <a className="font-bold">
                             {" "} software development
+                            
                         </a>
                         <div>
                             and consulting company.
@@ -78,21 +79,33 @@ export default function main({ teams, products, services, solutions }: InferGetS
 
                     </div>
 
-                    <div className="text-2xl tex-black pt-10">
+                    <div className="text-2xl tex-black pt-10 text-primaryColour">
                         We are committed to providing flexible,
                         low-cost solutions to our customers that will help make their businesses
                         run more smoothly and profitably.
+
+
+
+
+                        <div className="hidden lg:mt-0 lg:col-span-5 lg:flex lg:pt-12 px-0 py-0">
+                            <img src="/swirl_arrow.svg" alt="" />
+
+                        </div>
                     </div>
 
 
-                    <div className=" ">
 
-                        <div className="hidden lg:mt-0 lg:col-span-5 lg:flex absolute left-[500px] top-[300px]">
-                            <img src="/swirl_arrow.svg" alt="profile" />
+
+
+
+                    {/* <div className=" ">
+
+                        <div className="hidden lg:mt-0 lg:col-span-5 lg:flex absolute left-[500px] ">
+                            <img src="/swirl_arrow.svg" alt="" />
 
                         </div>
 
-                    </div>
+                    </div> */}
 
                 </div>
 
