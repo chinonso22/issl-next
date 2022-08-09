@@ -24,6 +24,7 @@ type Product = {
     title: string;
     content: string;
     slug: string;
+    tag: string
 }
 
 type Solution = {
@@ -50,6 +51,7 @@ export default function Products({ product, services, solutions, products }: { p
             <>
             <Head>
                 <title> ISSL {product.title}  </title>
+                <meta name="description" content={product.tag}  />
             </Head>
                 <NavBar2 products={products} services={services} solutions={solutions} />
 
@@ -86,7 +88,7 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
 export async function getStaticProps({ params }: GetStaticPropsContext) {
     const product = (await query.Product.findOne({
         where: { slug: params!.slug as string },
-        query: 'id title content slug',
+        query: 'id title content slug tag',
     })) as Product | null;
     if (!product) {
         return { notFound: true };

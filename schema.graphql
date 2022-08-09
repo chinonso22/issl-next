@@ -6,7 +6,13 @@ type Service {
   title: String
   slug: String
   content: String
+  tag: String
+  author: User
+  editedOn: DateTime
 }
+
+scalar DateTime
+  @specifiedBy(url: "https://datatracker.ietf.org/doc/html/rfc3339#section-5.6")
 
 input ServiceWhereUniqueInput {
   id: ID
@@ -21,6 +27,9 @@ input ServiceWhereInput {
   title: StringFilter
   slug: StringFilter
   content: StringFilter
+  tag: StringFilter
+  author: UserWhereInput
+  editedOn: DateTimeNullableFilter
 }
 
 input IDFilter {
@@ -62,11 +71,24 @@ input NestedStringFilter {
   not: NestedStringFilter
 }
 
+input DateTimeNullableFilter {
+  equals: DateTime
+  in: [DateTime!]
+  notIn: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  gt: DateTime
+  gte: DateTime
+  not: DateTimeNullableFilter
+}
+
 input ServiceOrderByInput {
   id: OrderDirection
   title: OrderDirection
   slug: OrderDirection
   content: OrderDirection
+  tag: OrderDirection
+  editedOn: OrderDirection
 }
 
 enum OrderDirection {
@@ -78,6 +100,15 @@ input ServiceUpdateInput {
   title: String
   slug: String
   content: String
+  tag: String
+  author: UserRelateToOneForUpdateInput
+  editedOn: DateTime
+}
+
+input UserRelateToOneForUpdateInput {
+  create: UserCreateInput
+  connect: UserWhereUniqueInput
+  disconnect: Boolean
 }
 
 input ServiceUpdateArgs {
@@ -89,6 +120,14 @@ input ServiceCreateInput {
   title: String
   slug: String
   content: String
+  tag: String
+  author: UserRelateToOneForCreateInput
+  editedOn: DateTime
+}
+
+input UserRelateToOneForCreateInput {
+  create: UserCreateInput
+  connect: UserWhereUniqueInput
 }
 
 type Team {
@@ -98,6 +137,8 @@ type Team {
   name: String
   content: String
   avatar: ImageFieldOutput
+  author: User
+  editedOn: DateTime
 }
 
 type ImageFieldOutput {
@@ -130,6 +171,8 @@ input TeamWhereInput {
   postion: StringFilter
   name: StringFilter
   content: StringFilter
+  author: UserWhereInput
+  editedOn: DateTimeNullableFilter
 }
 
 input TeamOrderByInput {
@@ -138,6 +181,7 @@ input TeamOrderByInput {
   postion: OrderDirection
   name: OrderDirection
   content: OrderDirection
+  editedOn: OrderDirection
 }
 
 input TeamUpdateInput {
@@ -146,6 +190,8 @@ input TeamUpdateInput {
   name: String
   content: String
   avatar: ImageFieldInput
+  author: UserRelateToOneForUpdateInput
+  editedOn: DateTime
 }
 
 input ImageFieldInput {
@@ -168,6 +214,8 @@ input TeamCreateInput {
   name: String
   content: String
   avatar: ImageFieldInput
+  author: UserRelateToOneForCreateInput
+  editedOn: DateTime
 }
 
 type Product {
@@ -175,6 +223,9 @@ type Product {
   title: String
   slug: String
   content: String
+  tag: String
+  author: User
+  editedOn: DateTime
 }
 
 input ProductWhereUniqueInput {
@@ -190,6 +241,9 @@ input ProductWhereInput {
   title: StringFilter
   slug: StringFilter
   content: StringFilter
+  tag: StringFilter
+  author: UserWhereInput
+  editedOn: DateTimeNullableFilter
 }
 
 input ProductOrderByInput {
@@ -197,12 +251,17 @@ input ProductOrderByInput {
   title: OrderDirection
   slug: OrderDirection
   content: OrderDirection
+  tag: OrderDirection
+  editedOn: OrderDirection
 }
 
 input ProductUpdateInput {
   title: String
   slug: String
   content: String
+  tag: String
+  author: UserRelateToOneForUpdateInput
+  editedOn: DateTime
 }
 
 input ProductUpdateArgs {
@@ -214,6 +273,9 @@ input ProductCreateInput {
   title: String
   slug: String
   content: String
+  tag: String
+  author: UserRelateToOneForCreateInput
+  editedOn: DateTime
 }
 
 type Solution {
@@ -221,6 +283,9 @@ type Solution {
   title: String
   slug: String
   content: String
+  tag: String
+  author: User
+  editedOn: DateTime
 }
 
 input SolutionWhereUniqueInput {
@@ -236,6 +301,9 @@ input SolutionWhereInput {
   title: StringFilter
   slug: StringFilter
   content: StringFilter
+  tag: StringFilter
+  author: UserWhereInput
+  editedOn: DateTimeNullableFilter
 }
 
 input SolutionOrderByInput {
@@ -243,12 +311,17 @@ input SolutionOrderByInput {
   title: OrderDirection
   slug: OrderDirection
   content: OrderDirection
+  tag: OrderDirection
+  editedOn: OrderDirection
 }
 
 input SolutionUpdateInput {
   title: String
   slug: String
   content: String
+  tag: String
+  author: UserRelateToOneForUpdateInput
+  editedOn: DateTime
 }
 
 input SolutionUpdateArgs {
@@ -260,6 +333,9 @@ input SolutionCreateInput {
   title: String
   slug: String
   content: String
+  tag: String
+  author: UserRelateToOneForCreateInput
+  editedOn: DateTime
 }
 
 type User {

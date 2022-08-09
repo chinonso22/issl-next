@@ -30,6 +30,7 @@ type Service={
     title: string;
     content: string;
     slug: string;
+    tag: string 
 }
 
 
@@ -51,6 +52,7 @@ export default function Services({ service, products, services, solutions }: { s
             <>
             <Head>
                 <title> ISSL {service.title} </title>
+                <meta  name="description" content={service.tag} />
             </Head>
                 <NavBar2 products={products} services={services} solutions={solutions} />
 
@@ -86,7 +88,7 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
 export async function getStaticProps({ params }: GetStaticPropsContext) {
     const service = (await query.Service.findOne({
         where: { slug: params!.slug as string },
-        query: 'id title content slug',
+        query: 'id title content slug tag',
     })) as Service | null;
     if (!service) {
         return { notFound: true };

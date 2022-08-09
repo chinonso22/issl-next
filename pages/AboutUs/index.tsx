@@ -58,6 +58,8 @@ export default function main({ teams, products, services, solutions }: InferGetS
             <>
                 <Head>
                     <title> ISSL AboutUs </title>
+
+                    <meta  name="description" content="" />
                 </Head>
                 <NavBar2 products={products} services={services} solutions={solutions} />
                 {/* Hero Section */}

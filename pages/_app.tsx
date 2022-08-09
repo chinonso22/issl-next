@@ -2,7 +2,7 @@ import '../styles/globals.css'
 import '../styles/nprogress.css'
 import type { ReactElement, ReactNode } from 'react'
 import type { NextPage } from 'next'
-import type { AppProps } from 'next/app'
+import type { AppProps, NextWebVitalsMetric } from 'next/app'
 
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
@@ -34,4 +34,8 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   
 
   return (<Component {...pageProps} />)
+}
+
+export function reportWebVitals(metric: NextWebVitalsMetric) {
+  console.log(metric)
 }
