@@ -35,7 +35,7 @@ type Session = {
 const session = statelessSessions({
   // maxAge: sessionMaxAge,
   // The session secret is used to encrypt cookie data (should be an environment variable)
-  secret: "",
+  secret: SESSION_SECRET,
 });
 
 const { withAuth } = createAuth({
