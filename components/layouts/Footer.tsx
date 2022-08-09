@@ -6,7 +6,7 @@ export default function Footer() {
     return (
         <div className="bg-grayColour bottom-0 w-full items-center text-primaryColour  px-10  ">
 
-            <div className="flex center grid grid-cols-3 space-x-10 pt-5 pb-2">
+            <div className="flex center grid grid-cols-3 space-x-10 pt-5 pb-2 space-y-10">
 
 
 
@@ -19,7 +19,7 @@ export default function Footer() {
 
 
 
-                <div className=" break-words">
+                <div className=" break-words col-span-3 lg:col-span-1 w-40 ">
                     Quick links
 
 
@@ -101,7 +101,7 @@ export default function Footer() {
                 </div>
 
 
-                <div className="  break-words">
+                <div className="   break-words col-span-3 lg:col-span-1  w-40 lg:w-full">
                     Contact Information
 
                     <div className="font-semibold">
