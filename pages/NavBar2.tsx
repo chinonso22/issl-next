@@ -74,7 +74,7 @@ export default function NavBar2({ products, solutions, services }: NavBar2Props 
                         fill='none'
                         stroke='currentColor'
                         viewBox='0 0 24 24'
-                        xmlns='http://www.w3.org/2000/svg'
+                        
                     >
                         <path
                             strokeLinecap='round'
@@ -105,7 +105,7 @@ export default function NavBar2({ products, solutions, services }: NavBar2Props 
                             <div>
                                 <Menu.Button className=" lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center  hover:bg-grayColour hover:text-primaryColour text-left">
                                     Services 
-                                    {/* <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" /> */}
+                                   
                                 </Menu.Button>
                             </div>
 
@@ -158,7 +158,7 @@ export default function NavBar2({ products, solutions, services }: NavBar2Props 
                             <div>
                                 <Menu.Button className=" lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center  hover:bg-grayColour hover:text-primaryColour text-left">
                                     Solutions
-                                    {/* <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" /> */}
+                                   
                                 </Menu.Button>
                             </div>
 
@@ -208,8 +208,7 @@ export default function NavBar2({ products, solutions, services }: NavBar2Props 
                             <div>
                                 <Menu.Button className=" lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center  hover:bg-grayColour hover:text-primaryColour text-left">
                                     Products
-                                    {/* <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" /> */}
-                                </Menu.Button>
+                                   </Menu.Button>
                             </div>
 
                             <Transition
@@ -255,13 +254,13 @@ export default function NavBar2({ products, solutions, services }: NavBar2Props 
 
                         <Link href='/AboutUs'>
                             <a className='lg:inline-flex lg:w-auto w-full px-4 py-2 rounded text-white font-bold items-center justify-center hover:bg-grayColour hover:text-primaryColour'>
-                                About us
+                                About
                             </a>
                         </Link>
 
                         <Link href='/'>
-                            <a className='lg:inline-flex lg:w-auto w-full px-5 py-2 rounded text-white font-bold items-center justify-center hover:bg-grayColour hover:text-primaryColour'>
-                                Contact us
+                            <a className='lg:inline-flex lg:w-auto w-full px-5 py-2 rounded text-white font-bold items-center justify-center hover:bg-grayColour hover:text-primaryColour bg-red-600'>
+                                Contact
                             </a>
                         </Link>
 

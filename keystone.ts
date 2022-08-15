@@ -49,9 +49,9 @@ const { withAuth } = createAuth({
 const User:Lists.User = list({
   access: {
     operation: {
-      create: isAdmin,
-      update: isAdmin,
-      delete: isAdmin,
+      create: () => true,
+      update: () => true,
+      delete: () => true,
     },
   },
   fields: {
@@ -148,14 +148,6 @@ const Team: Lists.Team = list({
     
   },
 });
-
-
-
-
-
-
-
-
 
 
 export default withAuth(

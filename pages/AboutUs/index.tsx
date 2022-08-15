@@ -18,14 +18,18 @@ import "swiper/css/navigation";
 
 
 // import required modules
-import { Pagination, Navigation } from "swiper";
+import { Pagination, Navigation, EffectCoverflow } from "swiper";
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
 import Link from "next/link";
 import Head from "next/head";
+
+
+
+
+
+
+// import required modules
+
 
 
 
@@ -65,11 +69,11 @@ export default function main({ teams, products, services, solutions }: InferGetS
                 {/* Hero Section */}
                 <div className="w-full text-center bg-grayColour md:p-20 pt-5 pb-5 relative">
 
-                    <div className="text-4xl text-primaryColour">
+                    <div className="lg:text-4xl text-2xl text-primaryColour px-5">
                         We are a
                         <a className="font-bold">
                             {" "} software development
-                            
+
                         </a>
                         <div>
                             and consulting company.
@@ -79,7 +83,7 @@ export default function main({ teams, products, services, solutions }: InferGetS
 
                     </div>
 
-                    <div className="text-2xl tex-black pt-10 text-primaryColour">
+                    <div className="lg:text-2xl text-lg tex-black pt-10 text-primaryColour px-10 lg:px-0">
                         We are committed to providing flexible,
                         low-cost solutions to our customers that will help make their businesses
                         run more smoothly and profitably.
@@ -87,13 +91,13 @@ export default function main({ teams, products, services, solutions }: InferGetS
 
 
 
-                        <div className="hidden lg:mt-0 lg:col-span-5 lg:flex lg:pt-12 px-0 py-0">
+                        <div className="hidden lg:mt-0 lg:col-span-5 lg:flex lg:pt-12 absolute left-[500px]">
                             <img src="/swirl_arrow.svg" alt="" />
 
                         </div>
                     </div>
 
-
+                   
 
 
 
@@ -188,59 +192,63 @@ export default function main({ teams, products, services, solutions }: InferGetS
 
 
                     <Swiper
-                        slidesPerView={1}
-                        spaceBetween={30}
-                        loop={true}
-                        pagination={{
-                            clickable: true,
-                        }}
-                        navigation={true}
-                        modules={[Pagination, Navigation]}
-                        className="mySwiper w-full"
-                    >
-                        {teams.map(team => (
-                            <div key={team.id}>
+                    effect={"coverflow"}
+                    grabCursor={true}
+                    slidesPerView={3}
+                    spaceBetween={30}
+                    autoHeight={true}
+                   
+                    centeredSlides={true}
+                    pagination={{
+                        clickable: true,
+                    }}
+                    loop={true}
+                    navigation={true}
 
-                                <SwiperSlide>
-                                    <section className="bg-primaryColour w-full">
+                    coverflowEffect={{
+                        rotate: 50,
+                        stretch: 0,
+                        depth: 100,
+                        modifier: 1,
+                        slideShadows: false,
+                    }}
 
+                    modules={[EffectCoverflow, Pagination, Navigation]}
+                    className="swiper"
+                >
+                    {teams.map(team => (
+                        <div key={team.id}>
 
-                                        <div className="grid max-w-screen-xl md:max-w-[5000px] px-4 py-8 mx-auto lg:gap-8 xl:gap-0 md:py-10 lg:grid-cols-12">
-                                            <div className="mr-auto place-self-start  md:py-[100px] md:px-10 lg:col-span-7">
+                            <SwiperSlide
+                                className="w-40"
+                            >
 
-                                                <h1 className=" text-white max-w-2xl mb-4 text-4xl tracking-tight leading-none md:text-5xl xl:text-6xl md:text-left ">
+                                <section className="bg-white w-56">
+                                    <img className="rounded-lg shadow-lg mx-auto"
+                                        src={team.avatar?.url}
+                                        alt="avatar" />
 
-                                                    {team.name}
-                                                    <p>
-                                                        {team.postion}
-                                                    </p>
-                                                </h1>
-
-                                                <p className="max-w-2xl mb-6 font-light text-white lg:mb-8 md:text-lg lg:text-xl md:text-left ">
-
-                                                    {team.content}
-                                                </p>
-
-                                            </div>
-
-
-                                            <div className="lg:w-[300px] lg:pt-[150px] lg:pl-[50px] ">
-                                                <div className="hidden lg:mt-0 lg:col-span-5 lg:flex ">
-                                                    <img src={team.avatar?.url} alt="profile" />
-
-                                                </div>
-                                            </div>
-
+                                    <div className="text-center">
+                                        <div className="text-primaryColour">
+                                            {team.name}
+                                            <p className="text-black">
+                                                {team.postion}
+                                            </p>
                                         </div>
 
-                                    </section>
+                                        <div className="text-black  pt-5">
+                                            {team.content}
+                                        </div>
 
-                                </SwiperSlide>
+                                    </div>
 
-                            </div>
-                        ))}
+                                </section>
+                            </SwiperSlide>
 
-                    </Swiper>
+                        </div>
+                    ))}
+
+                </Swiper>
 
 
                 </div>

@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import '../styles/nprogress.css'
+
 import type { ReactElement, ReactNode } from 'react'
 import type { NextPage } from 'next'
 import type { AppProps, NextWebVitalsMetric } from 'next/app'
