@@ -50,14 +50,8 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX
 
 
   return (
-
-    
-
       <Component {...pageProps} />
   
-
-
-
   )
 }
 
