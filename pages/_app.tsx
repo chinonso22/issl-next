@@ -55,10 +55,10 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX
   )
 }
 
-export function reportWebVitals(metric: NextWebVitalsMetric) {
-  console.log(metric)
+// export function reportWebVitals(metric: NextWebVitalsMetric) {
+//   console.log(metric)
 
-}
+// }
 
 
 
