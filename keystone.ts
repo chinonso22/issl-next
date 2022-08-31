@@ -65,7 +65,23 @@ const User:Lists.User = list({
 
 
 
-
+const Home: Lists.Service=list ({
+  access: {
+    operation: {
+      create: () => true,
+      update: () => true,
+      delete: () => true,
+    },
+  },
+  fields: {
+   
+    slug: text({ isIndexed: 'unique', isFilterable: true }),
+    content: text(),
+    tag: text({ validation: { isRequired: true } }),
+    author: relationship({ ref: 'User' }),
+    editedOn: timestamp()
+  },
+})
 
 
 const Service: Lists.Service = list({
@@ -160,7 +176,7 @@ export default withAuth(
 
     session,
 
-    lists: { Service, Team, Product, Solution, User },
+    lists: { Service, Team, Product, Solution, User, Home },
     storage: {
       my_local_images: {
         // Images that use this store will be stored on the local machine

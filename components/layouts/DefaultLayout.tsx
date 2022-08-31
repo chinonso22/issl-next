@@ -35,9 +35,9 @@ function DefaultLayout({ children }: { children?: JSX.Element }) {
 
                         {children}
 
-                        <div className="pt-5">
+                        {/* <div className="pt-5">
                             <Footer />
-                        </div>
+                        </div> */}
                     </main>
 
                 </div>
