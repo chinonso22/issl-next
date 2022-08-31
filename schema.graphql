@@ -401,6 +401,66 @@ input UserCreateInput {
   isAdmin: Boolean
 }
 
+type Home {
+  id: ID!
+  title: String
+  slug: String
+  content: String
+  tag: String
+  author: User
+  editedOn: DateTime
+}
+
+input HomeWhereUniqueInput {
+  id: ID
+  slug: String
+}
+
+input HomeWhereInput {
+  AND: [HomeWhereInput!]
+  OR: [HomeWhereInput!]
+  NOT: [HomeWhereInput!]
+  id: IDFilter
+  title: StringFilter
+  slug: StringFilter
+  content: StringFilter
+  tag: StringFilter
+  author: UserWhereInput
+  editedOn: DateTimeNullableFilter
+}
+
+input HomeOrderByInput {
+  id: OrderDirection
+  title: OrderDirection
+  slug: OrderDirection
+  content: OrderDirection
+  tag: OrderDirection
+  editedOn: OrderDirection
+}
+
+input HomeUpdateInput {
+  title: String
+  slug: String
+  content: String
+  tag: String
+  author: UserRelateToOneForUpdateInput
+  editedOn: DateTime
+}
+
+input HomeUpdateArgs {
+  where: HomeWhereUniqueInput!
+  data: HomeUpdateInput!
+}
+
+input HomeCreateInput {
+  title: String
+  slug: String
+  content: String
+  tag: String
+  author: UserRelateToOneForCreateInput
+  editedOn: DateTime
+}
+
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
@@ -449,6 +509,12 @@ type Mutation {
   updateUsers(data: [UserUpdateArgs!]!): [User]
   deleteUser(where: UserWhereUniqueInput!): User
   deleteUsers(where: [UserWhereUniqueInput!]!): [User]
+  createHome(data: HomeCreateInput!): Home
+  createHomes(data: [HomeCreateInput!]!): [Home]
+  updateHome(where: HomeWhereUniqueInput!, data: HomeUpdateInput!): Home
+  updateHomes(data: [HomeUpdateArgs!]!): [Home]
+  deleteHome(where: HomeWhereUniqueInput!): Home
+  deleteHomes(where: [HomeWhereUniqueInput!]!): [Home]
   endSession: Boolean!
   authenticateUserWithPassword(
     name: String!
@@ -510,6 +576,14 @@ type Query {
   ): [User!]
   user(where: UserWhereUniqueInput!): User
   usersCount(where: UserWhereInput! = {}): Int
+  homes(
+    where: HomeWhereInput! = {}
+    orderBy: [HomeOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+  ): [Home!]
+  home(where: HomeWhereUniqueInput!): Home
+  homesCount(where: HomeWhereInput! = {}): Int
   keystone: KeystoneMeta!
   authenticatedItem: AuthenticatedItem
 }

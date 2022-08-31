@@ -79,4 +79,18 @@ model User {
   from_Team_author     Team[]     @relation("Team_author")
   from_Product_author  Product[]  @relation("Product_author")
   from_Solution_author Solution[] @relation("Solution_author")
+  from_Home_author     Home[]     @relation("Home_author")
+}
+
+model Home {
+  id       String    @id @default(cuid())
+  title    String    @default("")
+  slug     String    @unique @default("")
+  content  String    @default("")
+  tag      String    @default("")
+  author   User?     @relation("Home_author", fields: [authorId], references: [id])
+  authorId String?   @map("author")
+  editedOn DateTime?
+
+  @@index([authorId])
 }
