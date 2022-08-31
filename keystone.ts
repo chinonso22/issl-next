@@ -65,7 +65,7 @@ const User:Lists.User = list({
 
 
 
-const Home: Lists.Service=list ({
+const Home: Lists.Home=list ({
   access: {
     operation: {
       create: () => true,
