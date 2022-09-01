@@ -403,7 +403,6 @@ input UserCreateInput {
 
 type Home {
   id: ID!
-  title: String
   slug: String
   content: String
   tag: String
@@ -421,7 +420,6 @@ input HomeWhereInput {
   OR: [HomeWhereInput!]
   NOT: [HomeWhereInput!]
   id: IDFilter
-  title: StringFilter
   slug: StringFilter
   content: StringFilter
   tag: StringFilter
@@ -431,7 +429,6 @@ input HomeWhereInput {
 
 input HomeOrderByInput {
   id: OrderDirection
-  title: OrderDirection
   slug: OrderDirection
   content: OrderDirection
   tag: OrderDirection
@@ -439,7 +436,6 @@ input HomeOrderByInput {
 }
 
 input HomeUpdateInput {
-  title: String
   slug: String
   content: String
   tag: String
@@ -453,10 +449,107 @@ input HomeUpdateArgs {
 }
 
 input HomeCreateInput {
-  title: String
   slug: String
   content: String
   tag: String
+  author: UserRelateToOneForCreateInput
+  editedOn: DateTime
+}
+
+type NavBar {
+  id: ID!
+  slug: String
+  content: String
+  author: User
+  editedOn: DateTime
+}
+
+input NavBarWhereUniqueInput {
+  id: ID
+}
+
+input NavBarWhereInput {
+  AND: [NavBarWhereInput!]
+  OR: [NavBarWhereInput!]
+  NOT: [NavBarWhereInput!]
+  id: IDFilter
+  slug: StringFilter
+  content: StringFilter
+  author: UserWhereInput
+  editedOn: DateTimeNullableFilter
+}
+
+input NavBarOrderByInput {
+  id: OrderDirection
+  slug: OrderDirection
+  content: OrderDirection
+  editedOn: OrderDirection
+}
+
+input NavBarUpdateInput {
+  slug: String
+  content: String
+  author: UserRelateToOneForUpdateInput
+  editedOn: DateTime
+}
+
+input NavBarUpdateArgs {
+  where: NavBarWhereUniqueInput!
+  data: NavBarUpdateInput!
+}
+
+input NavBarCreateInput {
+  slug: String
+  content: String
+  author: UserRelateToOneForCreateInput
+  editedOn: DateTime
+}
+
+type Footer {
+  id: ID!
+  slug: String
+  content: String
+  author: User
+  editedOn: DateTime
+}
+
+input FooterWhereUniqueInput {
+  id: ID
+}
+
+input FooterWhereInput {
+  AND: [FooterWhereInput!]
+  OR: [FooterWhereInput!]
+  NOT: [FooterWhereInput!]
+  id: IDFilter
+  slug: StringFilter
+  content: StringFilter
+  author: UserWhereInput
+  editedOn: DateTimeNullableFilter
+}
+
+input FooterOrderByInput {
+  id: OrderDirection
+  slug: OrderDirection
+  content: OrderDirection
+  editedOn: OrderDirection
+}
+
+input FooterUpdateInput {
+  slug: String
+  content: String
+  author: UserRelateToOneForUpdateInput
+  editedOn: DateTime
+}
+
+input FooterUpdateArgs {
+  where: FooterWhereUniqueInput!
+  data: FooterUpdateInput!
+}
+
+input FooterCreateInput {
+  slug: String
+  content: String
   author: UserRelateToOneForCreateInput
   editedOn: DateTime
 }
@@ -515,6 +608,18 @@ type Mutation {
   updateHomes(data: [HomeUpdateArgs!]!): [Home]
   deleteHome(where: HomeWhereUniqueInput!): Home
   deleteHomes(where: [HomeWhereUniqueInput!]!): [Home]
+  createNavBar(data: NavBarCreateInput!): NavBar
+  createNavBars(data: [NavBarCreateInput!]!): [NavBar]
+  updateNavBar(where: NavBarWhereUniqueInput!, data: NavBarUpdateInput!): NavBar
+  updateNavBars(data: [NavBarUpdateArgs!]!): [NavBar]
+  deleteNavBar(where: NavBarWhereUniqueInput!): NavBar
+  deleteNavBars(where: [NavBarWhereUniqueInput!]!): [NavBar]
+  createFooter(data: FooterCreateInput!): Footer
+  createFooters(data: [FooterCreateInput!]!): [Footer]
+  updateFooter(where: FooterWhereUniqueInput!, data: FooterUpdateInput!): Footer
+  updateFooters(data: [FooterUpdateArgs!]!): [Footer]
+  deleteFooter(where: FooterWhereUniqueInput!): Footer
+  deleteFooters(where: [FooterWhereUniqueInput!]!): [Footer]
   endSession: Boolean!
   authenticateUserWithPassword(
     name: String!
@@ -584,6 +689,22 @@ type Query {
   ): [Home!]
   home(where: HomeWhereUniqueInput!): Home
   homesCount(where: HomeWhereInput! = {}): Int
+  navBars(
+    where: NavBarWhereInput! = {}
+    orderBy: [NavBarOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+  ): [NavBar!]
+  navBar(where: NavBarWhereUniqueInput!): NavBar
+  navBarsCount(where: NavBarWhereInput! = {}): Int
+  footers(
+    where: FooterWhereInput! = {}
+    orderBy: [FooterOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+  ): [Footer!]
+  footer(where: FooterWhereUniqueInput!): Footer
+  footersCount(where: FooterWhereInput! = {}): Int
   keystone: KeystoneMeta!
   authenticatedItem: AuthenticatedItem
 }
