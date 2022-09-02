@@ -5,6 +5,14 @@ import DefaultLayout from "../components/layouts/DefaultLayout";
 import Head from "next/head";
 
 type Home = {
+    slug: string
+    content: string
+    tag: string
+    id: string
+}
+
+
+type Nav = {
 
     slug: string
     content: string
@@ -12,49 +20,41 @@ type Home = {
     id: string
 }
 
-type NavBar = {
-    slug: string
-    content: string
-    id: string
-
-}
-
 type Footer = {
+
     slug: string
     content: string
+    tag: string
     id: string
 }
 
-type navbars={
-    navbars: InferGetStaticPropsType<typeof getStaticProps>
-}
-type footers ={
-    footers: InferGetStaticPropsType<typeof getStaticProps>
-}
+export default function index({ homes, navs }: InferGetStaticPropsType<typeof getStaticProps>) {
 
-type homes ={
-    homes: InferGetStaticPropsType<typeof getStaticProps>
-}
-
-export default function Home({ homes, navbars, footers }:{homes:Home, navbars:NavBar, footers:Footer }) {
     return (
 
         <DefaultLayout>
             <>
 
 
-               
-                        <div
-                            key={navbars.id}
-                        >
-                            <div dangerouslySetInnerHTML={{ __html: navbars.content }} />
-                        </div>
 
-                
                 
 
 
               
+
+                {navs.map(nav => (
+                    <div
+                        key={nav.id}>
+                        <div dangerouslySetInnerHTML={{ __html: nav.content }} />
+                    </div>
+                ))}
+
+                
+
+
+
+                {homes.map(home => (
+
 
                     <div
                         key={homes.id}
@@ -64,17 +64,8 @@ export default function Home({ homes, navbars, footers }:{homes:Home, navbars:Na
                         </Head>
                         <div dangerouslySetInnerHTML={{ __html: homes.content }} />
                     </div>
-
-
               
-     
-                        <div
-                            key={footers.id}
-                        >
-                            <div dangerouslySetInnerHTML={{ __html: footers.content }} />
-                        </div>
-
-                  
+                ))}
 
 
 
@@ -88,16 +79,19 @@ export default function Home({ homes, navbars, footers }:{homes:Home, navbars:Na
 
 export async function getStaticProps() {
 
-    const homes = await query.Home.findMany({ query: 'id  slug content tag' }) as Home[] |homes;
-    const navbars = await query.Home.findMany({ query: 'id slug content' }) as NavBar[] | navbars;
-    const footers = await query.Home.findMany({ query: 'id slug content' }) as Footer[] | footers;
+
+    
+    const homes = await query.Home.findMany({ query: 'id slug content tag' }) as Home[];
+    const navs = await query.Nav.findMany({ query: 'id slug content tag' }) as Nav[]
+
 
 
     return {
         props: {
-            homes,
-            navbars,
-            footers
+            homes,        
+            navs
+
+
         }
     }
 }

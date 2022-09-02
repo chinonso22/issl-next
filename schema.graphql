@@ -449,6 +449,64 @@ input HomeUpdateArgs {
 }
 
 input HomeCreateInput {
+<<<<<<< HEAD
+=======
+  slug: String
+  content: String
+  tag: String
+  author: UserRelateToOneForCreateInput
+  editedOn: DateTime
+}
+
+type Nav {
+  id: ID!
+  slug: String
+  content: String
+  tag: String
+  author: User
+  editedOn: DateTime
+}
+
+input NavWhereUniqueInput {
+  id: ID
+  slug: String
+}
+
+input NavWhereInput {
+  AND: [NavWhereInput!]
+  OR: [NavWhereInput!]
+  NOT: [NavWhereInput!]
+  id: IDFilter
+  slug: StringFilter
+  content: StringFilter
+  tag: StringFilter
+  author: UserWhereInput
+  editedOn: DateTimeNullableFilter
+}
+
+input NavOrderByInput {
+  id: OrderDirection
+  slug: OrderDirection
+  content: OrderDirection
+  tag: OrderDirection
+  editedOn: OrderDirection
+}
+
+input NavUpdateInput {
+  slug: String
+  content: String
+  tag: String
+  author: UserRelateToOneForUpdateInput
+  editedOn: DateTime
+}
+
+input NavUpdateArgs {
+  where: NavWhereUniqueInput!
+  data: NavUpdateInput!
+}
+
+input NavCreateInput {
+>>>>>>> upstream
   slug: String
   content: String
   tag: String
@@ -608,6 +666,7 @@ type Mutation {
   updateHomes(data: [HomeUpdateArgs!]!): [Home]
   deleteHome(where: HomeWhereUniqueInput!): Home
   deleteHomes(where: [HomeWhereUniqueInput!]!): [Home]
+<<<<<<< HEAD
   createNavBar(data: NavBarCreateInput!): NavBar
   createNavBars(data: [NavBarCreateInput!]!): [NavBar]
   updateNavBar(where: NavBarWhereUniqueInput!, data: NavBarUpdateInput!): NavBar
@@ -620,6 +679,14 @@ type Mutation {
   updateFooters(data: [FooterUpdateArgs!]!): [Footer]
   deleteFooter(where: FooterWhereUniqueInput!): Footer
   deleteFooters(where: [FooterWhereUniqueInput!]!): [Footer]
+=======
+  createNav(data: NavCreateInput!): Nav
+  createNavs(data: [NavCreateInput!]!): [Nav]
+  updateNav(where: NavWhereUniqueInput!, data: NavUpdateInput!): Nav
+  updateNavs(data: [NavUpdateArgs!]!): [Nav]
+  deleteNav(where: NavWhereUniqueInput!): Nav
+  deleteNavs(where: [NavWhereUniqueInput!]!): [Nav]
+>>>>>>> upstream
   endSession: Boolean!
   authenticateUserWithPassword(
     name: String!
@@ -689,6 +756,7 @@ type Query {
   ): [Home!]
   home(where: HomeWhereUniqueInput!): Home
   homesCount(where: HomeWhereInput! = {}): Int
+<<<<<<< HEAD
   navBars(
     where: NavBarWhereInput! = {}
     orderBy: [NavBarOrderByInput!]! = []
@@ -705,6 +773,16 @@ type Query {
   ): [Footer!]
   footer(where: FooterWhereUniqueInput!): Footer
   footersCount(where: FooterWhereInput! = {}): Int
+=======
+  navs(
+    where: NavWhereInput! = {}
+    orderBy: [NavOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+  ): [Nav!]
+  nav(where: NavWhereUniqueInput!): Nav
+  navsCount(where: NavWhereInput! = {}): Int
+>>>>>>> upstream
   keystone: KeystoneMeta!
   authenticatedItem: AuthenticatedItem
 }

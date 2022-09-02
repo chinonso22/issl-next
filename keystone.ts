@@ -46,8 +46,17 @@ const { withAuth } = createAuth({
 
 
 
-const User:Lists.User = list({
- 
+
+
+const User: Lists.User = list({
+  access: {
+    operation: {
+      create: () => true,
+      update: () => true,
+      delete: () => true,
+    },
+  },
+
   fields: {
     email: text(),
     name: text({ isIndexed: 'unique' }),
@@ -57,33 +66,25 @@ const User:Lists.User = list({
 });
 
 
-const NavBar: Lists.NavBar  =list ({
+
+
+
+
+
+
+
+
+
+const Home: Lists.Home = list({
+  access: {
+    operation: {
+      create: () => true,
+      update: () => true,
+      delete: () => true,
+    },
+  },
   fields: {
-    slug: text(),
-    content: text({ validation:{isRequired:true} }),
-    author: relationship({ ref: 'User' }),
-    editedOn: timestamp()
-  }
-})
 
-
-
-
-const Footer: Lists.Footer =list ({
-  fields: {
-    slug: text(),
-    content: text({ validation:{isRequired:true} }),
-    author: relationship({ ref: 'User' }),
-    editedOn: timestamp()
-
-
-  }
-})
-
-
-const Home: Lists.Home=list ({
-  fields: {
-   
     slug: text({ isIndexed: 'unique', isFilterable: true }),
     content: text(),
     tag: text({ validation: { isRequired: true } }),
@@ -106,7 +107,17 @@ const Service: Lists.Service = list({
 });
 
 const Product: Lists.Product = list({
+
   
+
+  access: {
+    operation: {
+      create: () => true,
+      update: () => true,
+      delete: () => true,
+    },
+  },
+>>>>>>> upstream
   fields: {
     title: text({ validation: { isRequired: true } }),
     slug: text({ isIndexed: 'unique', isFilterable: true }),
@@ -120,7 +131,17 @@ const Product: Lists.Product = list({
 
 
 const Solution: Lists.Solution = list({
+<<<<<<< HEAD
   
+=======
+  access: {
+    operation: {
+      create: () => true,
+      update: () => true,
+      delete: () => true,
+    },
+  },
+>>>>>>> upstream
   fields: {
     title: text({ validation: { isRequired: true } }),
     slug: text({ isIndexed: 'unique', isFilterable: true }),
@@ -128,7 +149,7 @@ const Solution: Lists.Solution = list({
     tag: text({ validation: { isRequired: true } }),
     author: relationship({ ref: 'User' }),
     editedOn: timestamp(),
-    
+
 
   },
 });
@@ -137,7 +158,17 @@ const Solution: Lists.Solution = list({
 
 
 const Team: Lists.Team = list({
+<<<<<<< HEAD
   
+=======
+  access: {
+    operation: {
+      create: () => true,
+      update: () => true,
+      delete: () => true,
+    },
+  },
+>>>>>>> upstream
   fields: {
     slug: text({ isIndexed: 'unique', isFilterable: true }),
     postion: text({ validation: { isRequired: true } }),
@@ -146,7 +177,7 @@ const Team: Lists.Team = list({
     avatar: image({ storage: 'my_local_images' }),
     author: relationship({ ref: 'User' }),
     editedOn: timestamp()
-    
+
   },
 });
 
@@ -161,7 +192,11 @@ export default withAuth(
 
     session,
 
+<<<<<<< HEAD
     lists: { Service, Team, Product, Solution, User, Home, NavBar, Footer },
+=======
+    lists: { Service, Team, Product, Solution, User, Home, Nav },
+>>>>>>> upstream
     storage: {
       my_local_images: {
         // Images that use this store will be stored on the local machine
