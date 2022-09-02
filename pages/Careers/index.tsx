@@ -1,15 +1,18 @@
 import { InferGetServerSidePropsType, InferGetStaticPropsType } from "next";
 import { query } from '.keystone/api';
 import { Lists } from '.keystone/types';
-import DefaultLayout from "../components/layouts/DefaultLayout";
+import DefaultLayout from '../../components/layouts/DefaultLayout'
 import Head from "next/head";
+import React from "react";
 
-type Home = {
+
+type Career = {
     slug: string
     content: string
     tag: string
     id: string
 }
+
 
 
 type Nav = {
@@ -23,17 +26,17 @@ type Foot = {
 
     slug: string
     content: string
-  
+    
     id: string
 }
 
-export default function index({ homes, navs, feet }: InferGetStaticPropsType<typeof getStaticProps>) {
 
+
+
+export default function About({ navs, feet, careers }: InferGetStaticPropsType<typeof getStaticProps>) {
     return (
-
         <DefaultLayout>
             <>
-
                 {navs.map(nav => (
                     <div
                         key={nav.id}>
@@ -42,17 +45,19 @@ export default function index({ homes, navs, feet }: InferGetStaticPropsType<typ
                 ))}
 
 
-                {homes.map(home => (
+
+                {careers.map(career => (
                     <div
-                        key={home.id}
+                        key={career.id}
                     >
                         <Head>
-                            <meta name='description' content={home.tag} />
+                            <meta name='description' content={career.tag} />
                         </Head>
-                        <div dangerouslySetInnerHTML={{ __html: home.content }} />
+                        <div dangerouslySetInnerHTML={{ __html: career.content }} />
                     </div>
 
                 ))}
+
 
 
                 {feet.map(foot => (
@@ -63,32 +68,28 @@ export default function index({ homes, navs, feet }: InferGetStaticPropsType<typ
                     </div>
                 ))}
 
-
-
             </>
-        </DefaultLayout>
 
+        </DefaultLayout>
     )
 }
 
 
 
+
 export async function getStaticProps() {
-
-
-
-    const homes = await query.Home.findMany({ query: 'id slug content tag' }) as Home[];
     const navs = await query.Nav.findMany({ query: 'id slug content ' }) as Nav[];
     const feet = await query.Foot.findMany({ query: 'id slug content ' }) as Foot[];
-
-
+    const careers = await query.Career.findMany({ query: 'id slug content tag' }) as Career[];
     return {
         props: {
-            homes,
+            careers,
             navs,
             feet
 
 
         }
     }
+
+
 }

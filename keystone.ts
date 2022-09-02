@@ -66,14 +66,62 @@ const User: Lists.User = list({
 });
 
 
+const Nav: Lists.Nav = list({
+  access: {
+    operation: {
+      create: () => true,
+      update: () => true,
+      delete: () => true,
+    },
+  },
+  fields: {
+
+    slug: text({ isIndexed: 'unique', isFilterable: true }),
+    content: text(),
+   
+    author: relationship({ ref: 'User' }),
+    editedOn: timestamp()
+  },
+
+});
 
 
+const Foot: Lists.Foot = list({
+  access: {
+    operation: {
+      create: () => true,
+      update: () => true,
+      delete: () => true,
+    },
+  },
+  fields: {
+
+    slug: text({ isIndexed: 'unique', isFilterable: true }),
+    content: text(),
+   
+    author: relationship({ ref: 'User' }),
+    editedOn: timestamp()
+  },
+})
 
 
+const Error: Lists.Error = list({
+  access: {
+    operation: {
+      create: () => true,
+      update: () => true,
+      delete: () => true,
+    },
+  },
+  fields: {
 
-
-
-
+    slug: text({ isIndexed: 'unique', isFilterable: true }),
+    content: text(),
+    tag: text({ validation: { isRequired: true } }),
+    author: relationship({ ref: 'User' }),
+    editedOn: timestamp()
+  },
+})
 
 const Home: Lists.Home = list({
   access: {
@@ -94,22 +142,11 @@ const Home: Lists.Home = list({
 })
 
 
-const Service: Lists.Service = list({
-  
-  fields: {
-    title: text({ validation: { isRequired: true } }),
-    slug: text({ isIndexed: 'unique', isFilterable: true }),
-    content: text(),
-    tag: text({ validation: { isRequired: true } }),
-    author: relationship({ ref: 'User' }),
-    editedOn: timestamp()
-  },
-});
 
-const Product: Lists.Product = list({
 
-  
 
+
+const About: Lists.About = list({
   access: {
     operation: {
       create: () => true,
@@ -117,23 +154,41 @@ const Product: Lists.Product = list({
       delete: () => true,
     },
   },
->>>>>>> upstream
   fields: {
-    title: text({ validation: { isRequired: true } }),
     slug: text({ isIndexed: 'unique', isFilterable: true }),
     content: text(),
     tag: text({ validation: { isRequired: true } }),
     author: relationship({ ref: 'User' }),
     editedOn: timestamp()
-
   },
 });
+
+
+
+
+const WhatWeDo: Lists.WhatWeDo = list({
+  access: {
+    operation: {
+      create: () => true,
+      update: () => true,
+      delete: () => true,
+    },
+  },
+  fields: {
+
+    slug: text({ isIndexed: 'unique', isFilterable: true }),
+    content: text(),
+    tag: text({ validation: { isRequired: true } }),
+    author: relationship({ ref: 'User' }),
+    editedOn: timestamp()
+  },
+})
+
+
 
 
 const Solution: Lists.Solution = list({
-<<<<<<< HEAD
-  
-=======
+
   access: {
     operation: {
       create: () => true,
@@ -141,7 +196,7 @@ const Solution: Lists.Solution = list({
       delete: () => true,
     },
   },
->>>>>>> upstream
+
   fields: {
     title: text({ validation: { isRequired: true } }),
     slug: text({ isIndexed: 'unique', isFilterable: true }),
@@ -155,12 +210,7 @@ const Solution: Lists.Solution = list({
 });
 
 
-
-
-const Team: Lists.Team = list({
-<<<<<<< HEAD
-  
-=======
+const Technology: Lists.Technology = list({
   access: {
     operation: {
       create: () => true,
@@ -168,7 +218,109 @@ const Team: Lists.Team = list({
       delete: () => true,
     },
   },
->>>>>>> upstream
+  fields: {
+    title: text({ validation: { isRequired: true } }),
+    slug: text({ isIndexed: 'unique', isFilterable: true }),
+    content: text(),
+    tag: text({ validation: { isRequired: true } }),
+    author: relationship({ ref: 'User' }),
+    editedOn: timestamp()
+  },
+})
+
+
+
+const Product: Lists.Product = list({
+  access: {
+    operation: {
+      create: () => true,
+      update: () => true,
+      delete: () => true,
+    },
+  },
+
+  fields: {
+    title: text({ validation: { isRequired: true } }),
+    slug: text({ isIndexed: 'unique', isFilterable: true }),
+    content: text(),
+    tag: text({ validation: { isRequired: true } }),
+    author: relationship({ ref: 'User' }),
+    editedOn: timestamp()
+
+  },
+});
+
+
+const Service: Lists.Service = list({
+  access: {
+    operation: {
+      create: () => true,
+      update: () => true,
+      delete: () => true,
+    },
+  },
+  fields: {
+    title: text({ validation: { isRequired: true } }),
+    slug: text({ isIndexed: 'unique', isFilterable: true }),
+    content: text(),
+    tag: text({ validation: { isRequired: true } }),
+    author: relationship({ ref: 'User' }),
+    editedOn: timestamp()
+  },
+});
+
+
+
+const Career: Lists.Career = list({
+  access: {
+    operation: {
+      create: () => true,
+      update: () => true,
+      delete: () => true,
+    },
+  },
+  fields: {
+
+    slug: text({ isIndexed: 'unique', isFilterable: true }),
+    content: text(),
+    tag: text({ validation: { isRequired: true } }),
+    author: relationship({ ref: 'User' }),
+    editedOn: timestamp()
+  },
+})
+
+const Contact: Lists.Contact = list({
+  access: {
+    operation: {
+      create: () => true,
+      update: () => true,
+      delete: () => true,
+    },
+  },
+  fields: {
+
+    slug: text({ isIndexed: 'unique', isFilterable: true }),
+    content: text(),
+    tag: text({ validation: { isRequired: true } }),
+    author: relationship({ ref: 'User' }),
+    editedOn: timestamp()
+  },
+})
+
+
+
+
+
+const Team: Lists.Team = list({
+
+  access: {
+    operation: {
+      create: () => true,
+      update: () => true,
+      delete: () => true,
+    },
+  },
+
   fields: {
     slug: text({ isIndexed: 'unique', isFilterable: true }),
     postion: text({ validation: { isRequired: true } }),
@@ -192,11 +344,9 @@ export default withAuth(
 
     session,
 
-<<<<<<< HEAD
-    lists: { Service, Team, Product, Solution, User, Home, NavBar, Footer },
-=======
-    lists: { Service, Team, Product, Solution, User, Home, Nav },
->>>>>>> upstream
+
+    lists: { Service, Team, Product, Solution, User, Home, Nav, Foot, About, WhatWeDo, Technology, Career, Contact, Error  },
+
     storage: {
       my_local_images: {
         // Images that use this store will be stored on the local machine

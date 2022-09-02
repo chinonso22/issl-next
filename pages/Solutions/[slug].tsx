@@ -11,6 +11,7 @@ import Header from '../../components/layouts/Header';
 
 import NavBar2 from "../NavBar2";
 import Head from "next/head";
+import { Key } from 'react';
 
 
 type Solution = {
@@ -21,37 +22,44 @@ type Solution = {
     tag: string;
 }
 
-type Service = {
-    id: string;
-    title: string;
-    content: string;
-    slug: string;
+type Nav = {
+    slug: string
+    content: string
+   
+    id: string
 }
 
-type Product = {
-    id: string;
-    title: string;
-    content: string;
-    slug: string;
+type Foot = {
+
+    slug: string
+    content: string
+   
+    id: string
 }
 
-type products = {
-    products: InferGetStaticPropsType<typeof getStaticProps>
+
+type navs = {
+    navs: InferGetStaticPropsType<typeof getStaticProps>
 }
 
-type solutions = {
-    solutions: InferGetStaticPropsType<typeof getStaticProps>
+type feet ={
+    feet: InferGetStaticPropsType<typeof getStaticProps>
 }
 
-type services = {
-    services: InferGetStaticPropsType<typeof getStaticProps>
-}
-export default function Solutions({ solution, products, solutions, services }: { solution: Solution, products: any, solutions: any, services: any }) {
+export default function Solutions({ solution, navs, feet }: { solution: Solution, navs: any, feet:any }) {
 
     return (
         <DefaultLayout>
             <>
-                <NavBar2 products={products} services={services} solutions={solutions} />
+                {/* <NavBar2 products={products} services={services} solutions={solutions} /> */}
+
+                {navs.map((nav: { id: Key | null | undefined; content: any; }) => (
+                    <div
+                        key={nav.id}>
+                        <div dangerouslySetInnerHTML={{ __html: nav.content }} />
+                    </div>
+                ))}
+
                 <Head>
                     <meta name='description' content={solution.tag} />
                     <title> ISSL {solution.title} </title>
@@ -60,6 +68,16 @@ export default function Solutions({ solution, products, solutions, services }: {
                 <div className="md:p-10">
                     <div className="" dangerouslySetInnerHTML={{ __html: solution.content }} />
                 </div>
+
+
+                {feet.map((foot: { id: Key | null | undefined; content: any; }) => (
+                    <div
+                        key={foot.id}
+                    >
+                        <div dangerouslySetInnerHTML={{ __html: foot.content }} />
+                    </div>
+                ))}
+
 
 
             </>
@@ -76,7 +94,7 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
 
     const paths = solutions
         .filter(({ slug }) => !!slug)
-        .map(({ slug }) => `/Solution/${slug}`);
+        .map(({ slug }) => `/Solutions/${slug}`);
 
     return {
         paths,
@@ -94,16 +112,15 @@ export async function getStaticProps({ params }: GetStaticPropsContext) {
     }
 
     //for navbar
-    const products = await query.Product.findMany({ query: 'title slug content id' }) as Product[] | products;
-    const solutions = await query.Solution.findMany({ query: 'title slug content id' }) as Solution[] | solutions;
-    const services = await query.Service.findMany({ query: "title slug content id " }) as Service[] | services;
+    const navs = await query.Nav.findMany({ query: 'id slug content ' }) as Nav[];
+    const feet = await query.Foot.findMany({ query: 'id slug content ' }) as Foot[];
 
     return {
         props: {
             solution,
-            products,
-            solutions,
-            services
+            navs,
+            feet
+
         }
     };
 }
