@@ -4,7 +4,7 @@ import { Lists } from '.keystone/types';
 import DefaultLayout from "../components/layouts/DefaultLayout";
 
 type Home = {
-    title: string
+    
     slug: string
     content: string
     tag: string
@@ -38,7 +38,7 @@ export default function Home({ homes }: InferGetStaticPropsType<typeof getStatic
 
 export async function getStaticProps() {
 
-    const homes = await query.Home.findMany({ query: 'id title slug content tag' }) as Home[]
+    const homes = await query.Home.findMany({ query: 'id  slug content tag' }) as Home[]
 
     return {
         props: {
@@ -46,3 +46,5 @@ export async function getStaticProps() {
         }
     }
 }
+
+

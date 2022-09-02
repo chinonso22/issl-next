@@ -84,7 +84,6 @@ model User {
 
 model Home {
   id       String    @id @default(cuid())
-  title    String    @default("")
   slug     String    @unique @default("")
   content  String    @default("")
   tag      String    @default("")

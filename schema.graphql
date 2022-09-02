@@ -403,7 +403,6 @@ input UserCreateInput {
 
 type Home {
   id: ID!
-  title: String
   slug: String
   content: String
   tag: String
@@ -421,7 +420,6 @@ input HomeWhereInput {
   OR: [HomeWhereInput!]
   NOT: [HomeWhereInput!]
   id: IDFilter
-  title: StringFilter
   slug: StringFilter
   content: StringFilter
   tag: StringFilter
@@ -431,7 +429,6 @@ input HomeWhereInput {
 
 input HomeOrderByInput {
   id: OrderDirection
-  title: OrderDirection
   slug: OrderDirection
   content: OrderDirection
   tag: OrderDirection
@@ -439,7 +436,6 @@ input HomeOrderByInput {
 }
 
 input HomeUpdateInput {
-  title: String
   slug: String
   content: String
   tag: String
@@ -453,7 +449,6 @@ input HomeUpdateArgs {
 }
 
 input HomeCreateInput {
-  title: String
   slug: String
   content: String
   tag: String
