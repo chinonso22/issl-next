@@ -46,7 +46,7 @@ const { withAuth } = createAuth({
 
 
 
-const User:Lists.User = list({
+const User: Lists.User = list({
   access: {
     operation: {
       create: () => true,
@@ -63,9 +63,7 @@ const User:Lists.User = list({
 });
 
 
-
-
-const Home: Lists.Service=list ({
+const Nav: Lists.Nav = list({
   access: {
     operation: {
       create: () => true,
@@ -74,7 +72,25 @@ const Home: Lists.Service=list ({
     },
   },
   fields: {
-   
+    slug: text({ isIndexed: 'unique', isFilterable: true }),
+    content: text(),
+    tag: text({ validation: { isRequired: true } }),
+    author: relationship({ ref: 'User' }),
+    editedOn: timestamp()
+  },
+});
+
+
+const Home: Lists.Home = list({
+  access: {
+    operation: {
+      create: () => true,
+      update: () => true,
+      delete: () => true,
+    },
+  },
+  fields: {
+
     slug: text({ isIndexed: 'unique', isFilterable: true }),
     content: text(),
     tag: text({ validation: { isRequired: true } }),
@@ -106,8 +122,8 @@ const Product: Lists.Product = list({
   access: {
     operation: {
       create: () => true,
-      update:() => true,
-      delete:() => true,
+      update: () => true,
+      delete: () => true,
     },
   },
   fields: {
@@ -125,7 +141,7 @@ const Product: Lists.Product = list({
 const Solution: Lists.Solution = list({
   access: {
     operation: {
-      create:() => true,
+      create: () => true,
       update: () => true,
       delete: () => true,
     },
@@ -137,7 +153,7 @@ const Solution: Lists.Solution = list({
     tag: text({ validation: { isRequired: true } }),
     author: relationship({ ref: 'User' }),
     editedOn: timestamp(),
-    
+
 
   },
 });
@@ -148,9 +164,9 @@ const Solution: Lists.Solution = list({
 const Team: Lists.Team = list({
   access: {
     operation: {
-      create:() => true,
-      update:() => true,
-      delete:() => true,
+      create: () => true,
+      update: () => true,
+      delete: () => true,
     },
   },
   fields: {
@@ -161,7 +177,7 @@ const Team: Lists.Team = list({
     avatar: image({ storage: 'my_local_images' }),
     author: relationship({ ref: 'User' }),
     editedOn: timestamp()
-    
+
   },
 });
 
@@ -176,7 +192,7 @@ export default withAuth(
 
     session,
 
-    lists: { Service, Team, Product, Solution, User, Home },
+    lists: { Service, Team, Product, Solution, User, Home, Nav },
     storage: {
       my_local_images: {
         // Images that use this store will be stored on the local machine
