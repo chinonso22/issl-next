@@ -12,57 +12,56 @@ import Header from '../../components/layouts/Header';
 import NavBar2 from "../NavBar2";
 import Head from "next/head";
 
+
+type Solution = {
+    id: string;
+    title: string;
+    content: string;
+    slug: string;
+    tag: string;
+}
+
+type Service = {
+    id: string;
+    title: string;
+    content: string;
+    slug: string;
+}
+
 type Product = {
     id: string;
     title: string;
     content: string;
     slug: string;
-};
-type Solution ={
-    id: string;
-    title: string;
-    content: string;
-    slug: string;
-};
-
-type Service={
-    id: string;
-    title: string;
-    content: string;
-    slug: string;
-    tag: string 
 }
-
 
 type products = {
     products: InferGetStaticPropsType<typeof getStaticProps>
 }
-type services={
+
+type solutions = {
+    solutions: InferGetStaticPropsType<typeof getStaticProps>
+}
+
+type services = {
     services: InferGetStaticPropsType<typeof getStaticProps>
 }
-type solutions={
-    solutions:InferGetStaticPropsType<typeof getStaticProps>
-}
-
-
-export default function Services({ service, products, services, solutions }: { service: Service, products: any, services:any, solutions:any }) {
+export default function Solutions({ solution, products, solutions, services }: { solution: Solution, products: any, solutions: any, services: any }) {
 
     return (
         <DefaultLayout>
             <>
-            <Head>
-                <title> ISSL {service.title} </title>
-                <meta  name="description" content={service.tag} />
-            </Head>
                 <NavBar2 products={products} services={services} solutions={solutions} />
-
-
+                <Head>
+                    <meta name='description' content={solution.tag} />
+                    <title> ISSL {solution.title} </title>
+                </Head>
 
                 <div className="md:p-10">
-                    <div className="" dangerouslySetInnerHTML={{ __html: service.content }} />
+                    <div className="" dangerouslySetInnerHTML={{ __html: solution.content }} />
                 </div>
 
-             
+
             </>
 
         </DefaultLayout>
@@ -71,13 +70,13 @@ export default function Services({ service, products, services, solutions }: { s
 
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
-    const services = (await query.Service.findMany({
+    const solutions = (await query.Solution.findMany({
         query: `slug`,
     })) as { slug: string }[];
 
-    const paths = services
+    const paths = solutions
         .filter(({ slug }) => !!slug)
-        .map(({ slug }) => `/Service/${slug}`);
+        .map(({ slug }) => `/Solutions/${slug}`);
 
     return {
         paths,
@@ -86,27 +85,25 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
 }
 
 export async function getStaticProps({ params }: GetStaticPropsContext) {
-    const service = (await query.Service.findOne({
+    const solution = (await query.Solution.findOne({
         where: { slug: params!.slug as string },
         query: 'id title content slug tag',
-    })) as Service | null;
-    if (!service) {
+    })) as Solution | null;
+    if (!solution) {
         return { notFound: true };
     }
 
-    //for the nav bar
+    //for navbar
     const products = await query.Product.findMany({ query: 'title slug content id' }) as Product[] | products;
-    const services = await query.Service.findMany({query:'title slug content id'}) as Service[] | services;
-    const solutions = await query.Solution.findMany({ query:'title slug content id' }) as Solution[] |solutions;
-
-
+    const solutions = await query.Solution.findMany({ query: 'title slug content id' }) as Solution[] | solutions;
+    const services = await query.Service.findMany({ query: "title slug content id " }) as Service[] | services;
 
     return {
         props: {
-          service,
+            solution,
             products,
-            services,
-            solutions
+            solutions,
+            services
         }
     };
 }
